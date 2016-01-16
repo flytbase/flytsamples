@@ -1,5 +1,5 @@
 var namespace="";
-var ip = "192.168.1.113:9090";
+var ip = "localhost:9090";
 
 
 $(document).ready(function() {
