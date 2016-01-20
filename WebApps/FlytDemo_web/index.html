@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+
+
+    <!-- Include the compiled Ionic CSS -->
+    <link href="./css/ionic.css" rel="stylesheet">
+    <link href="./css/ionic.css" rel="stylesheet">
+    <link href="./css/FlytDemo_web.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+
+</head>
+<body>
+
+<div class="bar bar-header bar-dark">
+
+
+    <h1 class="title">Flyt Demo</h1>
+
+</div>
+
+
+
+<div class="list" style="top:100px;">
+    <label class="item item-input">
+        <input type="text" placeholder="Enter Square Dimension" id="dimension">
+    </label>
+
+    <button class="button button-block button-positive" id="square">
+        Execute Square
+    </button>
+
+  
+    <div style="text-align: center">
+    <button class="button button-dark button-positive" id="msg">
+    </div>
+    </button>
+    <br>
+
+
+
+    <div class="item">
+        <div class="row">
+
+
+            <div class="col col-25 col-offset-10">X</div>
+            <div class="col col-50 col-offset-25" id="posx"></div>
+
+    </div>
+    </div>
+
+    <div class="item">
+        <div class="row">
+
+
+            <div class="col col-25 col-offset-10">Y</div>
+            <div class="col col-50 col-offset-25" id="posy"></div>
+
+        </div>
+    </div>
+
+    <div class="item">
+        <div class="row">
+
+
+            <div class="col col-25 col-offset-10">Z</div>
+            <div class="col col-50 col-offset-25" id="posz"></div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<!-- Include the compiled Ionic JS -->
+<script src="./js/ionic.bundle.js"></script>
+<script src="./js/ionic.bundle.min.js"></script>
+<!--<script src="./js/index.js"></script>-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!--<script src="cordova.js"></script>-->
+<script src="./js/eventemitter2.min.js"></script>
+<script src="./js/roslib.js"></script>
+
+
+
+<script src="./js/FlytDemo_web.js"></script>
+
+</body>
+</html>
