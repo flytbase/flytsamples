@@ -9,8 +9,6 @@ position:absolute;
 
 }
 
-
-
 .LogBut{
 position:absolute;
     top: 300px;
@@ -19,39 +17,9 @@ position:absolute;
 }
 
 
-
-/*
-
-.square-box{
-position: absolute;
-     top:300px;
-    left:10px;
-    width:250px;
-    height:100px;
-
-background: white;
-
-}*/
-
-
-
-
-/*
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}*/
 th, td {
     padding: 5px;
     text-align: center;
 
 }
-/*
-table#t01 {
-    position:absolute;
-    top:300px;
-    left:300px;
-    width: 30px;
-    background-color: white;
-}
-*/
+
