@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	}
 	
     float side_length = std::stof(argv[1]);             //Convert Argument from string to float
-    nav.takeoff(3.0);                                   //Taking Off
+    nav.take_off(3.0);                                   //Taking Off
     nav.position_set(side_length,0,-3);                 //Sending Position Setpoints with side length accepted from script
     nav.position_set(side_length,side_length,-3);
     nav.position_set(0,side_length,-3);
