@@ -34,6 +34,13 @@ shape created by you.
 know about the steps involved in creating a Cordova based mobile app with
 Ionic framework using Intellij Idea.
 
+## Testing
+
+For testing the application using FlytSim, please set the mode to 0 and
+for testing using FlytOS, please set the mode to 1.
+
+## Installation
+
 To install this application onto your device download ShapeTrace.apk file.
 
 
