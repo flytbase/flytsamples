@@ -36,8 +36,18 @@ Ionic framework using Intellij Idea.
 
 ## Testing
 
-For testing the application using FlytSim, please set the mode to 0 and
-for testing using FlytOS, please set the mode to 1.
+Testing can be done with FlytSim and with FlytOS. To test the application with
+either of the two, please set the the mode in Shape.js file. Mode represents
+the testing environment.
+
+### With FlytSim
+For testing the application using FlytSim, please set the mode to 0.
+
+### With FlytOS
+For testing the application using FlytOS, please set the mode to 1. To install
+DemoApp4 go to the link [here.](https://github.com/flytbase/flytsamples/tree/master/OnboardApps/cpp)
+
+To know more about Onboard APIs [click here.](http://docs.flytbase.com/docs/FlytAPI/OnboardAPIs.html)
 
 ## Installation
 
