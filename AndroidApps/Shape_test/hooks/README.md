@@ -36,6 +36,6 @@ Using npm install the latest Ionic and Cordova::
 
    $ sudo npm install -g cordova ionic
 
-To learn more about installations [click here](http://docs.flytbase.com/docs/FlytApps/Web_MobileApps.html)
+To learn more about installations [click here.](http://docs.flytbase.com/docs/FlytApps/Web_MobileApps.html)
 
 
