@@ -510,7 +510,7 @@ $(".disarm").click(function(){
 
                    $(".land").addClass("ion-arrow-up-a take_off");
                    $(".take_off").removeClass("ion-arrow-down-a land");
-                  
+
 
 
                }
