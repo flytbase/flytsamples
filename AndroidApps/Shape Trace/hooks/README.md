@@ -37,20 +37,21 @@ Ionic framework using Intellij Idea.
 ## Testing
 
 Testing can be done with FlytSim and with FlytOS. To test the application with
-either of the two, please set the the mode in Shape.js file. Mode represents
-the testing environment.
+either of the two, please set the mode in [shape.js](https://github.com/flytbase/flytsamples/blob/master/AndroidApps/Shape%20Trace/www/js/shape.js)
+file. Mode represents the testing environment.
 
 ### With FlytSim
-For testing the application using FlytSim, please set the mode to 0.
+For testing the application using FlytSim, please set the mode to 0. To install
+DemoApp4 go to the link [here.](https://github.com/flytbase/flytsamples/tree/master/OnboardApps/cpp)
 
 ### With FlytOS
-For testing the application using FlytOS, please set the mode to 1. To install
-DemoApp4 go to the link [here.](https://github.com/flytbase/flytsamples/tree/master/OnboardApps/cpp)
+For testing the application using FlytOS, please set the mode to 1.
 
 To know more about Onboard APIs [click here.](http://docs.flytbase.com/docs/FlytAPI/OnboardAPIs.html)
 
 ## Installation
 
-To install this application onto your device download ShapeTrace.apk file.
+To install this application onto your device download [ShapeTrace.apk](https://github.com/flytbase/flytsamples/blob/master/AndroidApps/Shape%20Trace/ShapeTrace.apk)
+file.
 
 

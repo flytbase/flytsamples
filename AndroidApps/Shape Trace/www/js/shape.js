@@ -11,7 +11,7 @@ var waypointsquare = [];
 
 var mode=0;
 
-//mode 0 is for testing using FlytSim and mode 1 is for testing using FlytOS and FlytSim.
+//mode 0 is for testing using FlytSim and mode 1 is for testing using FlytOS.
 //Please set the mode above accordingly.
 
 $(document).ready(function() {
