@@ -9,6 +9,10 @@ var flag=0,lat,long,globalLat=0,globalLong=0;
 var waypointrec = [], waypointpoly = [],waypointlist = [];
 var waypointsquare = [];
 
+var mode=0;
+
+//mode 0 is for testing using FlytSim and mode 1 is for testing using FlytOS and FlytSim.
+//Please set the mode above accordingly.
 
 $(document).ready(function() {
 
@@ -136,11 +140,21 @@ $(".execute").click(function(){
 
     get_vertex();
 
+
+
+
+
+
     var string= "";
 
     for(var i=0;i<waypointsList.length;i++){
     string+= waypointsList[i].x_lat + " " + waypointsList[i].y_long+ " ";
     }
+
+
+    if(mode==0){
+
+    console.log("fsim");
 
     var msgdata = {};
     msgdata["app_name"]="demoapp4";
@@ -165,6 +179,12 @@ $(".execute").click(function(){
             }
         });
 
+    }
+
+
+    if(mode==1){
+
+        console.log("while flying");
         waypointsList[0].is_current=true;
             var msgdata1 = {};
             msgdata1["waypoints"]=waypointsList;
@@ -183,7 +203,7 @@ $(".execute").click(function(){
                        error: function(){
 
                        }
-                   });
+            });
 
     setTimeout(function(){
          var msgdata2 = {};
@@ -201,8 +221,10 @@ $(".execute").click(function(){
                        error: function(){
 
                        }
-                   });
+            });
     },2000);
+
+    }
 });
 
 
@@ -368,7 +390,7 @@ var msgdata = {};
                         globalLat =message.latitude;
                         globalLong =message.longitude;
                         c=c+1;
-                        console.log(c,globalLat);
+                        //console.log(c,globalLat);
                         var temp=new google.maps.LatLng(message.latitude,message.longitude);
                         if (flag){
                             draw(latlng,temp,'#0000AA');
@@ -434,22 +456,7 @@ var msgdata = {};
                          });
 
 
-                          var listenerBatteryStatus = new ROSLIB.Topic({
-                                                ros :ros,
-                                                name : '/'+namespace+'/mavros/battery',
-                                                messageType : 'mavros_msgs/BatteryStatus',
-                                                throttle_rate: 200
-                                        });
 
-
-                                        listenerBatteryStatus.subscribe(function(message) {
-                                             $(".battery-label").html("<i class='fa fa-bolt'> </i>  "+round(message.voltage,2)+" V");
-                                             $(".battery-label").removeClass("label-default");
-                                            $(".battery-label").addClass("label-warning");
-
-
-
-                                        });
 
 
          }
