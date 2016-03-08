@@ -15,6 +15,6 @@ int main(int argc, char *argv[])
     nav.position_set(side_length,side_length,-3);
     nav.position_set(0,side_length,-3);
     nav.position_set(0,0,-3);
-    nav.land();                                         //Landing
+    nav.land(false);                                         //Landing
 }
 
