@@ -1,3 +1,5 @@
+watch this script running on a hex with ps3eye, https://youtu.be/ewLlHLaXUPs
+
 You need flytOS to control a drone using this script.
 get it from www.flytbase.com/flytos
 
