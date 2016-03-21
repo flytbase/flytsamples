@@ -1,5 +1,5 @@
 var namespace="";
-var ip = "192.168.1.109:9090";
+var ip = "192.168.1.108:9090";
 
 
 $(document).ready(function() {
@@ -37,9 +37,7 @@ $(document).ready(function() {
                       $("#posx").html(message.twist.linear.x);
                       $("#posy").html(message.twist.linear.y);
                       $("#posz").html(message.twist.linear.z);
-//                      $('#velx').text(round(message.twist.angular.x,3));
-//                      $('#vely').text(round(message.twist.angular.y,3));
-//                      $('#velz').text(round(message.twist.angular.z,3));
+
               });
 
         }

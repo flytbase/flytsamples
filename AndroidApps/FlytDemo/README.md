@@ -23,7 +23,7 @@
 
 ## Introduction
 
-FlytDemo is a Cordova based application that uses Ionic framework.
+FlytDemo is a Cordova based application and uses Ionic framework.
 This application allows you to give commands to you drone to trace a
 square of user defined dimension.
 
@@ -33,6 +33,7 @@ Ionic framework using IntelliJ Idea.
 
 ## Installation
 
-To install this application onto your device download [FlytDemo.apk](https://github.com/flytbase/flytsamples/tree/master/AndroidApps/FlytDemo).
+To install this application onto your device download [FlytDemo.apk](https://github.com/flytbase/flytsamples/blob/master/AndroidApps/Shape%20Trace/ShapeTrace.apk)
+file.
 
 
