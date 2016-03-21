@@ -13,5 +13,5 @@ add_executable(demoapp2 demoapp2.cpp)
 target_link_libraries(demoapp2 ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES}) 
 
 install(TARGETS demoapp2
-  DESTINATION /Flyt/FlytApps/Onboard/install COMPONENT Runtime
+  DESTINATION /flyt/flytApps/onboard/install COMPONENT Runtime
 )
