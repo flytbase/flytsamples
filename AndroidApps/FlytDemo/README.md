@@ -24,7 +24,7 @@
 ## Introduction
 
 FlytDemo is a Cordova based application and uses Ionic framework.
-This application allows you to give commands to you drone to trace a
+This application allows you to give commands to your drone to trace a
 square of user defined dimension.
 
 [Click here](http://docs.flytbase.com/docs/FlytApps/Web_MobileApps.html) to
