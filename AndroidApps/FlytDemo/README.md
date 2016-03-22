@@ -33,7 +33,7 @@ Ionic framework using IntelliJ Idea.
 
 ## Installation
 
-To install this application onto your device download [FlytDemo.apk](https://github.com/flytbase/flytsamples/blob/master/AndroidApps/Shape%20Trace/ShapeTrace.apk)
+To install this application onto your device download [FlytDemo.apk]( https://s3-us-west-2.amazonaws.com/flytos/flyt_0.3.1/SampleAndroidApk/FlytDemo.apk)
 file.
 
 

@@ -11,7 +11,7 @@ var waypointsquare = [];
 
 var mode=0;
 
-//mode 0 is for testing using FlytSim and mode 1 is for testing using FlytOS and FlytSim.
+//mode 0 is for testing using FlytSim and mode 1 is for testing using FlytOS.
 //Please set the mode above accordingly.
 
 $(document).ready(function() {
@@ -191,12 +191,26 @@ $(".execute").click(function(){
 
             $.ajax({
                type: "POST",
-               headers: { 'Authentication-Token': sessionStorage.getItem('token') },
                dataType: "json",
                data: JSON.stringify(msgdata1),
                url: "http://"+ip+"/ros/"+namespace+"/navigation/waypoint_set",
                success: function(data){
                    if(data.success){
+                   var msgdata2 = {};
+                               $.ajax({
+                                  type: "POST",
+                                  dataType: "json",
+                                  data: JSON.stringify(msgdata2),
+                                  url: "http://"+ip+"/ros/"+namespace+"/navigation/waypoint_execute",
+                                  success: function(data){console.log(data);
+                                      if(data.success){
+
+                                      }
+                                  },
+                                          error: function(){
+
+                                          }
+                               });
 
                    }
                },
@@ -205,24 +219,7 @@ $(".execute").click(function(){
                        }
             });
 
-    setTimeout(function(){
-         var msgdata2 = {};
-            $.ajax({
-               type: "POST",
-               headers: { 'Authentication-Token': sessionStorage.getItem('token') },
-               dataType: "json",
-               data: JSON.stringify(msgdata2),
-               url: "http://"+ip+"/ros/"+namespace+"/navigation/waypoint_execute",
-               success: function(data){console.log(data);
-                   if(data.success){
 
-                   }
-               },
-                       error: function(){
-
-                       }
-            });
-    },2000);
 
     }
 });
@@ -261,13 +258,21 @@ function polygon(){
   });
    triangle.setMap(map);
 
+  google.maps.event.addListener(triangle, 'mousedown', function(e) {
+      // Check if click was on a vertex control point
+      if (e.vertex == undefined) {
+        return;
+      }
+      deleteMenu.open(map, triangle.getPath(), e.vertex);
+    });
+  }
 
 
 
 
 
 
- }
+
 
 
 
@@ -296,6 +301,7 @@ function rec(){
 
   northEast = rectangle.getBounds().getNorthEast();
   southWest = rectangle.getBounds().getSouthWest();
+
 
 
 
@@ -341,6 +347,9 @@ function rec(){
 
 
  }
+
+
+
 var c=0;
 function getNamespace(){
 var msgdata = {};
@@ -409,10 +418,10 @@ var msgdata = {};
                         flag1=1;
                         }
 
-
-                        if(globalLat<waypointsquare[0].lat() & globalLat>waypointsquare[1].lat()& globalLong>waypointsquare[0].lng() & globalLong<waypointsquare[1].lng() ){
-                        executing=true;
-                        }
+//
+//                        if(globalLat<waypointsquare[0].lat() & globalLat>waypointsquare[1].lat()& globalLong>waypointsquare[0].lng() & globalLong<waypointsquare[1].lng() ){
+//                        executing=true;
+//                        }
 
 
 
@@ -607,8 +616,14 @@ function secondClick() {
                }
            });
 
-
-
-
-
 }
+
+$("#tog").click(function(){
+
+    if($("#tog").prop('checked') == true){
+        mode=0;
+    }else{
+        mode=1;
+
+    }
+})
