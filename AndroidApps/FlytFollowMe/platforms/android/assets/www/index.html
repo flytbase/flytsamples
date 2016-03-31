@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Flyt Follow-Me</title>
+
+    <link href="./css/ionic.css" rel="stylesheet">
+    <link href="./css/ionic.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
+
+
+
+
+</head>
+<body>
+
+
+<div class="row">
+    <div class="bar bar-header bar-dark">
+        <div class="col col-10"></div>
+        <div class="col col-10"></div>
+        <div class="col col-10"></div>
+
+
+        <div class="col col-30"><h1 class="title">Flyt Follow-Me</h1></div>
+
+
+
+        <!--<div class="col col-10"><button class="button icon ion-battery-full battery_full"></button></div>-->
+        <div class="col col-10"><button class="button icon ion-wifi wifi"></button></div>
+        <div class="col col-10"><button class="button icon ion-locked gps_locked"></button></div>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+<div class="app-container" style="display:none;height:95%;top:40px;;position:absolute;width:100%">
+
+
+    <div id="map"></div>
+
+    <img src="" id="image-stream" class="stream" style="position:absolute; height:25%;top:50px;right:2%; width:20%;"> </img>
+    <div id="map-small" style="height:25%;width:20%;right:2%;position:absolute; top:50px;z-index:1000;background:grey;"></div>
+
+    <!--<div class="row" style="z-index:1000;"><br><br><br>-->
+
+        <!--<div class="col col-20 col-offset-20">-->
+            <!--<label id="lat" ></label>-->
+        <!--</div>-->
+
+        <!--<div class="col col-20 col-offset-20 ">-->
+            <!--<label id="long" ></label>-->
+        <!--</div>-->
+
+    <!--</div>-->
+
+    <div id="button_slide" style="left: 10px;">
+
+        <button class="button button balanced">|||</button>
+
+    </div>
+
+    <div id="slider" style="left:0px; width:200px;position:absolute;background:rgba(0,0,0,0.5); height:80%; ">
+
+    <div style=" left:0px;top:5%; width:200px;">
+
+        <div class="row">
+            <div class="col col-50">
+                <button class="button button-balanced start">Start</button>
+            </div>
+
+            <div class="col col-50">
+                <button class="button button-balanced stop">Stop</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style=" left:0px;top:15%; width:200px;">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"><button class="button icon ion-chevron-up lat-plus button-balanced button-large" style="width:10px;"></button></div>
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col"><button class="button icon ion-chevron-left long-minus button-balanced button-large" style="width:10px;"></button></div>
+                    <div class="col"></div>
+                    <div class="col"><button class="button icon ion-chevron-right long-plus button-balanced button-large" style="width:10px;"></button></div>
+                </div>
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col"><button class="button icon ion-chevron-down lat-minus button-balanced button-large" style="width:10px;"></button></div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="nudge" style=" top:60%; left:10px; width:80%; ">
+
+        <label class="item item-input" style="margin-left:20px;">
+            <span class="input-label" style="width:10px;">Nudge: </span>
+            <input input id="offset" type="text"   style="padding-left:0px;">
+        </label>
+
+
+    </div>
+
+    <br>
+
+    <div  style=" top:68%; left:10px; width:80%; ">
+
+        <label class="item item-input" style="margin-left:20px;">
+            <span class="input-label" style="width:10px;">Alt: </span>
+            <input input id="alt" type="text"   style="padding-left:0px;">
+        </label>
+
+
+    </div>
+
+        <br>
+    <!--<div id="main-controls2" style=" top:75%; left:0px; width:72px; ">-->
+        <!--<div class="row" style=" top:75%; left:10px; width:30px;">-->
+            <div class="row" style="left:30%">
+                <button class="button icon ion-arrow-up-a take_off button-calm button-block" id="button-takeoff"></button>
+            <!--</div>-->
+        </div>
+
+
+
+        <!--</div>-->
+
+
+    </div>
+
+    <div style="position:absolute; right:25px; top:76%;">
+        <button class=" button icon ion-android-locate locate button-calm"></button>
+    </div>
+
+</div>
+
+<!--<div id="circle" style="position:absolute; background:black; height:20%; width:20%; top:50%; left:10%">-->
+
+
+<!--</div>-->
+
+
+<div class="row space" style="height:100px;"></div>
+<div class="row ip-div">
+    <br><br><br><br><br><br>
+    <!--<div class="col"></div>-->
+    <div class="col">
+        <div class="list" style="width:80%;left:10%">
+            <label class="item item-input">
+                <span class="input-label" style="width:10px;">Enter IP</span>
+                <input type="text" id="ip" value="192.168.1." style="padding-left:0px;">
+            </label>
+            <button class="button button-positive button-large button-block submit" style="line-height:60%; width:100%;">SUBMIT</button>
+
+        </div>
+    </div>
+    <!--<div class="col"></div>-->
+
+</div>
+
+
+
+<div style="text-align:center; display:none;" class="button button-dark button-positive" id="msg" style="width:80%">
+
+</div>
+
+
+
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/ionic.bundle.js"></script>
+<script src="./js/ionic.bundle.min.js"></script>
+
+<script src="cordova.js"></script>
+
+<!--<script src="./js/geolocation-marker.js"></script>-->
+
+
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLIx5GlUCkawMBymvH0i6KiMooY8WbgFw&libraries=visualization">
+</script>
+
+
+<script src="./js/eventemitter2.min.js"></script>
+<script src="./js/roslib.js"></script>
+
+<script src="./js/auto.js"></script>
+</body>
+</html>
