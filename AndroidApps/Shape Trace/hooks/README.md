@@ -51,7 +51,7 @@ To know more about Onboard APIs [click here.](http://docs.flytbase.com/docs/Flyt
 
 ## Installation
 
-To install this application onto your device download [ShapeTrace.apk]( https://s3-us-west-2.amazonaws.com/flytos/flyt_0.3.1/SampleAndroidApk/ShapeTrace.apk)
+To install this application onto your device download [ShapeTrace.apk]( https://s3-us-west-2.amazonaws.com/flytos/SampleAndroidApk/ShapeTrace.apk)
 file.
 
 

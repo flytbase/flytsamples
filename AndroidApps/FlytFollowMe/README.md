@@ -17,19 +17,20 @@
 # specific language governing permissions and limitations
 # under the License.
 #
--->
+
 # Cordova Hooks
 
 Cordova Hooks represent special scripts which could be added by application and plugin developers or even by your own build system  to customize cordova commands. See Hooks Guide for more details:  http://cordova.apache.org/docs/en/edge/guide_appdev_hooks_index.md.html#Hooks%20Guide.
 
+-->
 
 # Flyt Follow-Me App
 
 ## Introduction
 
 Flyt Follow-Me is a Cordova based application with Ionic framework.
-With this application you can make your drone follow
-you. The drone uses your device's location and follows its movements.
+With this application you can make your drone follow you. The drone
+uses your device's location and follows its movements.
 
 
 [Click here](http://docs.flytbase.com/docs/FlytApps/Web_MobileApps.html) to
