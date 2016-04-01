@@ -20,11 +20,11 @@
 -->
 
 
-# Shape Trace App
+# FlytShapeTrace App
 
 ## Introduction
 
-Shape Trace is a Cordova based application with Ionic framework.
+FlytShapeTrace is a Cordova based application with Ionic framework.
 This application allows you to create shapes such as square, rectangle
 and polygon on Google map and gives command to your drone to trace the
 shape created by you.
