@@ -28,7 +28,7 @@ Cordova Hooks represent special scripts which could be added by application and 
 
 ## Introduction
 
-Flyt Follow-Me is a Cordova based application with Ionic framework.
+Flyt JoyStick is a Cordova based application with Ionic framework.
 This application lets you use your phone as a joystick to control your drone.
 You can move the drone about all three axes and rotate about the z axis.
 

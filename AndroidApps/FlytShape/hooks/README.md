@@ -20,11 +20,19 @@
 -->
 
 
+<<<<<<< HEAD:AndroidApps/FlytShape/hooks/README.md
 # FlytShape App
 
 ## Introduction
 
 FlytShape is a Cordova based application with Ionic framework.
+=======
+# FlytShapeTrace App
+
+## Introduction
+
+FlytShapeTrace is a Cordova based application with Ionic framework.
+>>>>>>> 6cf74d3077ab48e7ea5cf8f211bfe2f224b8ff30:AndroidApps/FlytShapeTrace/README.md
 This application allows you to create shapes such as square, rectangle
 and polygon on Google map and gives command to your drone to trace the
 shape created by you.
