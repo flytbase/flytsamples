@@ -402,7 +402,10 @@ var msgdata = {};
                                    name : '/'+namespace+'/mavros/extended_state',
                                    messageType : 'mavros_msgs/ExtendedState',
                                    throttle_rate: 200
-                           });    listenerExtendedState.subscribe(function(message) {
+                           });
+
+
+                           listenerExtendedState.subscribe(function(message) {
                                var landed_state=message.landed_state;
 
 
@@ -417,7 +420,9 @@ var msgdata = {};
                                        $(".land").addClass("ion-arrow-up-a take_off");
                                        $(".take-off").removeClass("ion-arrow-down-a land");
 
-                               }    });
+                               }
+
+                           });
 
 
 

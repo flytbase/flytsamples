@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Shape Trace</title>
+
+    <link href="./css/ionic.css" rel="stylesheet">
+    <link href="./css/ionic.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
+
+
+
+
+</head>
+<body>
+
+
+<div class="row"><div class="bar bar-header bar-dark">
+    <div class="col col-10"></div>
+    <div class="col col-10"></div>
+    <div class="col col-10"></div>
+
+
+    <div class="col col-30"><h1 class="title">Shape Trace</h1></div>
+
+
+
+    <!--<div class="col col-10"><button class="button icon ion-battery-full battery_full"></button></div>-->
+    <div class="col col-10"><button class="button icon ion-wifi wifi"></button></div>
+    <div class="col col-10"><button class="button icon ion-locked gps_locked"></button></div>
+
+
+
+</div>
+
+</div>
+
+<div class="row space" style="height:100px;"></div>
+<div class="row ip-div">
+    <br><br><br><br><br><br>
+    <div class="col"></div>
+    <div class="col">
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Enter IP</span>
+                <input type="text" id="ip" value="192.168.">
+            </label>
+            <button class="button button-positive button-large button-block submit" style="line-height:60px;">SUBMIT</button>
+
+        </div>
+    </div>
+    <div class="col"></div>
+
+</div>
+
+
+<div class="app-container" style="display: none;">
+<div id="map"></div>
+
+
+
+<div style="position:absolute; top:130px; right:10px; width:100px;">
+    <ul class="toggleClass">
+        Mode
+    <label class="toggle">
+        <input type="checkbox" id="tog">
+        <div class="track">
+            <div class="handle"></div>
+        </div>
+    </label>
+    </ul>
+</div>
+
+
+    <div style="position: absolute;top: 130px; left: 10px;width:100px;">
+
+
+
+        <div class="row">
+            <div class="row">
+                <button class="button icon ion-arrow-up-b Polygon"></button>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="row">
+                <button class="button icon ion-android-checkbox-outline-blank Rectangle"></button>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="row">
+                <button class="button ion-android-pin zoom"></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="row">
+                <button class="button icon ion-android-send execute"></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="row">
+                <button class="button button-positive icon ion-arrow-up-a take_off" id="button-takeoff"></button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="row">
+                <button class="button button-positive icon ion-android-cancel disarm"></button>
+            </div>
+        </div>
+
+
+</div>
+
+
+
+</div>
+
+<div style="text-align: center; display:none;" class="button button-dark button-positive" id="msg">
+
+</div>
+
+
+
+
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/ionic.bundle.js"></script>
+<script src="./js/ionic.bundle.min.js"></script>
+
+<script src="cordova.js"></script>
+
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLIx5GlUCkawMBymvH0i6KiMooY8WbgFw&libraries=visualization">
+</script>
+
+
+<script src="./js/eventemitter2.min.js"></script>
+<script src="./js/roslib.js"></script>
+
+<script src="./js/shape.js"></script>
+</body>
+</html>
