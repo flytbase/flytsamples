@@ -38,7 +38,7 @@ $("#msg").fadeOut(2000);
 
 //$(".rth").attr("disabled",true);
 
-$("#button-takeoff").on('click', clickOne)
+//$("#button-takeoff").on('click', clickOne)
 
 
 $(document).ready(function(){
@@ -66,37 +66,118 @@ $(document).ready(function(){
 
 
 
-$("#image-stream").click(function(){
+//$("#image-stream").click(function(){
+//
+//    $("#map").hide();
+////    $("#map-small").show(200);
+//    $("#image-stream").attr("style","position:absolute;height:auto;width:100%;left:0px;top:0px;z-index:-1;");
+////    $("#main-controls").hide();
+////    $("#main-controls2").hide();
+//
+//
+//});
 
-    $("#map").hide();
-    $("#map-small").show(200);
-    $("#image-stream").attr("style","position:absolute;height:auto;width:100%;left:0px;top:0px;z-index:-1;");
-//    $("#main-controls").hide();
-//    $("#main-controls2").hide();
+//$("#map-small").click(function(){
+//
+//    $("#map-small").hide();
+//    $("#map").show(200);
+//
+//    $("#image-stream").attr("style","position:absolute;height:25%;top:50px;width:20%;right:2%;z-index:1000;");
+//
+//
+//    try{
+//        map.setCenter(new google.maps.LatLng(globalLat,globalLong));
+//        map.setZoom(19);
+//    }
+//    catch(err){
+//        $("#msg").html("No internet connection:  " + err);
+//        //console.log("tttt"+err);
+//        $("#msg").show();
+//        $("#msg").fadeOut(2000);
+//
+//    }
+//});
 
 
-});
-
-$("#map-small").click(function(){
-
-    $("#map-small").hide();
-    $("#map").show(200);
-
-    $("#image-stream").attr("style","position:absolute;height:25%;top:50px;width:20%;right:2%;z-index:1000;");
+$("#video_expand").on('click', click1)
 
 
-    try{
-        map.setCenter(new google.maps.LatLng(globalLat,globalLong));
-        map.setZoom(19);
-    }
-    catch(err){
-        $("#msg").html("No internet connection:  " + err);
-        //console.log("tttt"+err);
-        $("#msg").show();
-        $("#msg").fadeOut(2000);
+function click1(){
 
-    }
-});
+//$("#map").hide();
+    //    $("#map-small").show(200);
+        $("#image-stream").attr("style","position:absolute;height:97%;width:auto;left:0px;top:0px;z-index:1000;");
+        $(".expand").addClass("ion-arrow-shrink compress");
+        $(".compress").removeClass("ion-arrow-expand expand");
+        $("#video_expand").attr("style","position:absolute; right:310px; top:0px; z-index:1000;");
+        $("#video_expand").off('click').on('click', click2)
+        console.log("expand");
+
+}
+
+
+function click2(){
+
+    console.log("shrink");
+        // $("#map-small").hide();
+            $("#map").show(200);
+
+            $("#image-stream").attr("style","position:absolute;height:25%;top:50px;width:20%;right:2%;z-index:1000;");
+            $(".compress").addClass("ion-arrow-expand expand");
+            $(".expand").removeClass("ion-arrow-shrink compress");
+            $("#video_expand").attr("style","position:absolute; right:20px; top:25px; z-index:1000;");
+
+            $("#video_expand").off('click').on('click', click1)
+
+
+            try{
+                map.setCenter(new google.maps.LatLng(globalLat,globalLong));
+                map.setZoom(19);
+            }
+            catch(err){
+                $("#msg").html("No internet connection:  " + err);
+                //console.log("tttt"+err);
+                $("#msg").show();
+                $("#msg").fadeOut(2000);
+
+            }
+
+}
+
+//$("#video_expand").click(function(){
+//    $("#map").hide();
+//    //    $("#map-small").show(200);
+//        $("#image-stream").attr("style","position:absolute;height:auto;width:100%;left:0px;top:0px;z-index:-1;");
+//        $(".expand").addClass("ion-arrow-shrink compress");
+//        $("compress").removeClass("ion-arrow-expand expand");
+//
+//
+//});
+//
+//$(".compress").click(function(){
+//
+//    console.log("shrink");
+//    // $("#map-small").hide();
+//        $("#map").show(200);
+//
+//        $("#image-stream").attr("style","position:absolute;height:25%;top:50px;width:20%;right:2%;z-index:1000;");
+//
+//
+//        try{
+//            map.setCenter(new google.maps.LatLng(globalLat,globalLong));
+//            map.setZoom(19);
+//        }
+//        catch(err){
+//            $("#msg").html("No internet connection:  " + err);
+//            //console.log("tttt"+err);
+//            $("#msg").show();
+//            $("#msg").fadeOut(2000);
+//
+//        }
+//
+//});
+
+
 
 
 
@@ -152,7 +233,7 @@ function followSetpoint(x,y,z){
                 msgdata.twist.twist.linear["z"]=parseFloat(z);
                 msgdata.twist.twist["angular"]={};
                 msgdata.twist.twist.angular["z"]=0;
-                msgdata["yaw_valid"]=true;
+                msgdata["yaw_valid"]=false;
                 msgdata["async"]=true;
                 $.ajax({
                         type: "POST",
@@ -187,6 +268,7 @@ $.ajax({
 
 $(".submit").click(function(){
 
+
     ip=$("#ip").val();
 
 
@@ -203,16 +285,25 @@ $(".submit").click(function(){
 
 
     else{
+
         ip=$("#ip").val()+":9090";
             console.log(ip);
             getNamespace();
 
         videoip = ip.substring(0,ip.lastIndexOf(":"));
+
+        $("#slider").hide();
     }
 
 
 
 
+});
+
+$('#ex1').slider({
+	formatter: function(value) {
+		return 'Current value: ' + value;
+	}
 });
 
 $(".start").click(function(){
@@ -222,6 +313,13 @@ $(".start").click(function(){
     $("#msg").html("Follow me enabled");
    $("#msg").show();
    $("#msg").fadeOut(1500);
+   $(".start").addClass("button-assertive");
+   $(".start").removeClass("button-calm");
+   $(".stop").addClass("button-calm");
+       $(".stop").removeClass("button-assertive");
+
+
+
 
 
 
@@ -231,6 +329,10 @@ $(".stop").click(function(){
 
     gps_follow=0;
     positionHold();
+    $(".stop").addClass("button-assertive");
+    $(".stop").removeClass("button-calm");
+      $(".start").addClass("button-calm");
+       $(".start").removeClass("button-assertive");
 
 
 });
@@ -397,32 +499,32 @@ var msgdata = {};
 
                          });
 
-                        var listenerExtendedState = new ROSLIB.Topic({
-                                   ros :ros,
-                                   name : '/'+namespace+'/mavros/extended_state',
-                                   messageType : 'mavros_msgs/ExtendedState',
-                                   throttle_rate: 200
-                           });
-
-
-                           listenerExtendedState.subscribe(function(message) {
-                               var landed_state=message.landed_state;
-
-
-                               if (landed_state==2 ){
-                                       $(".take_off").addClass("ion-arrow-down-a land");
-                                       $(".land").removeClass("ion-arrow-up-a take_off");
-
-                                }
-
-
-                                       else if(landed_state==1){
-                                       $(".land").addClass("ion-arrow-up-a take_off");
-                                       $(".take-off").removeClass("ion-arrow-down-a land");
-
-                               }
-
-                           });
+//                        var listenerExtendedState = new ROSLIB.Topic({
+//                                   ros :ros,
+//                                   name : '/'+namespace+'/mavros/extended_state',
+//                                   messageType : 'mavros_msgs/ExtendedState',
+//                                   throttle_rate: 200
+//                           });
+//
+//
+//                           listenerExtendedState.subscribe(function(message) {
+//                               var landed_state=message.landed_state;
+//
+//
+//                               if (landed_state==2 ){
+//                                       $(".take_off").addClass("ion-arrow-down-a land");
+//                                       $(".land").removeClass("ion-arrow-up-a take_off");
+//
+//                                }
+//
+//
+//                                       else if(landed_state==1){
+//                                       $(".land").addClass("ion-arrow-up-a take_off");
+//                                       $(".take-off").removeClass("ion-arrow-down-a land");
+//
+//                               }
+//
+//                           });
 
 
 
@@ -441,10 +543,14 @@ var msgdata = {};
 
 
 
-function clickOne() {
+
+
+$("#button-takeoff").click(function(){
 
 
 
+
+    console.log("yaa");
 
 
      var msgdata={};
@@ -456,9 +562,9 @@ function clickOne() {
                url: "http://"+ip+"/ros/"+namespace+"/navigation/take_off",
                success: function(data){console.log(data);
                    if(data.success){
-                        $(".take_off").addClass("ion-arrow-down-a land");
-                        $(".land").removeClass("ion-arrow-up-a take_off");
-                        $("#button-takeoff").off('click').on('click', clickTwo)
+//                        $(".take_off").addClass("ion-arrow-down-a land");
+//                        $(".land").removeClass("ion-arrow-up-a take_off");
+//                        $("#button-takeoff").off('click').on('click', clickTwo)
                         console.log("takeoff");
 
 
@@ -478,9 +584,14 @@ function clickOne() {
 
             }
         });
-}
 
-function clickTwo() {
+     });
+
+
+
+
+$("#button-land").click(function(){
+
 
      $(".land").attr("disabled",true);
 
@@ -498,9 +609,9 @@ function clickTwo() {
                    if(data.success){
 
                         $(".land").attr("disabled",false);
-                        $(".land").addClass("ion-arrow-up-a take_off");
-                        $(".take_off").removeClass("ion-arrow-down-a land");
-                        $("#button-takeoff").off('click').on('click', clickOne)
+//                        $(".land").addClass("ion-arrow-up-a take_off");
+//                        $(".take_off").removeClass("ion-arrow-down-a land");
+                        //$("#button-takeoff").off('click').on('click', clickOne)
                         console.log("land");
 
 
@@ -520,8 +631,8 @@ function clickTwo() {
 
                }
            });
+     });
 
-}
 
 function initMap() {
 
@@ -655,12 +766,15 @@ $("#button_slide").click(function(){
 if(slide==true){
 
 $("#slider").hide();
+$("#btn_slide").text(" ||| ")
 slide=false;
 
 }
 else{
 
 $("#slider").show();
+$("#btn_slide").text("Nudge ||| ")
+
 slide=true;
 }
 
