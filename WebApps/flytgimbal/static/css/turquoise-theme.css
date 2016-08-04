@@ -1,0 +1,11 @@
+
+
+.right-side-accordion .terques-bg,.slimScrollBar,.brand,.sidebar-toggle-box,ul.top-menu>li>a:hover,ul.top-menu>li>a:focus,.toggle-right-box:hover  {
+    background:#6CCAC9 !important;
+}
+
+
+ul.sidebar-menu li ul.sub li a:hover,ul.sidebar-menu li ul.sub li.active a ,ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus,ul.sidebar-menu li a.active i,ul.sidebar-menu li a:hover i,ul.sidebar-menu li a:focus i{
+    color: #6CCAC9;
+}
+
