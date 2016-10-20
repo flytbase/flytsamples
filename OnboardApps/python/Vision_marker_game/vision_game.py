@@ -3,7 +3,11 @@ import cv2.cv as cv
 import detector as vision
 import numpy as np
 from flyt_python import api
-nav = api.navigation() # instance of flyt navigation class
+import time
+
+nav = api.navigation(timeout=120000) # instance of flyt navigation class
+time.sleep(5)
+
 state_UP, state_DOWN = False, False
 delta_h = 1.0      ## vertical distance between top and bottom points
 # Take input from webcam
@@ -45,3 +49,4 @@ while(1):
 
 cap.release()
 cv2.destroyAllWindows()
+nav.disconnect()

@@ -1,9 +1,12 @@
 #!/usr/bin/env python
-
-from flyt_python import api
+import time
 import argparse
+from flyt_python import api
 
-nav = api.navigation() # instance of flyt navigation class
+drone = api.navigation(timeout=120000) # instance of flyt droneigation class
+
+#at least 3sec sleep time for the drone interface to initialize properly
+time.sleep(3)
 
 ## parsing command line arguments
 parser = argparse.ArgumentParser(description='Process a float value.')
@@ -12,11 +15,20 @@ args = parser.parse_args()
 
 ## lets fly 
 side_length = args.side
+
+print "taking off!"
+drone.take_off(3.0)
+
 print 'flying in square', side_length
-nav.take_off(3.0)
-nav.position_set(side_length,0,-3)
-nav.position_set(side_length,side_length,-3)
-nav.position_set(0,side_length,-3)
-nav.position_set(0,0,-3)
-nav.land(false)
-print 'done flying, wait for quad to land'
+drone.position_set(side_length,0,-3)
+drone.position_set(side_length,side_length,-3)
+drone.position_set(0,side_length,-3)
+drone.position_set(0,0,-3)
+
+print "landing"
+drone.land(False)
+print 'Cheers!!'
+
+#shutdown the instance
+drone.disconnect()
+ 
