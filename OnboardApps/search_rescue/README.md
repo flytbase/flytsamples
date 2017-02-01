@@ -27,13 +27,13 @@ Two drones, scouter and rescuer.
   2. copy surveyor.py to /flyt/flytapps/onboard/install/ directory on scouter drone
   3. copy rescuer.py to /flyt/flytapps/onboard/install/ directory on rescuer drone.
   4. Unzip flytsnr.zip on your laptop and open index.html in browser.
-  4. Connect webcam to compnanion computer/FlytPOD, start usb cam node.
+  5. Edit catkin_ws/src/apriltags_ros/launch/example.launch to include id's for your april tags and save.
   5. copy catkin_ws folder to home directory of scouter drone.
    
          cd catkin_ws
          catkin_make
          source devel/setup.bash
-         rosrun apriltags
+         roslaunch apritags_ros example.launch
   
 **Mission**:
   1. Keep scouter and rescuer close to each other, facing in same direction. Open web app on laptop, put ip address of both drones in app, upon connection you will see gps position on map. 
