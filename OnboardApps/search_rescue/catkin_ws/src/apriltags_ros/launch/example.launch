@@ -1,0 +1,39 @@
+<launch>
+  <node pkg="apriltags_ros" type="apriltag_detector_node" name="apriltag_detector" output="screen">
+    <rosparam param="tag_descriptions">[
+      {id: 26, size: 0.63, frame_id: "CAMP SITE #1"},
+      {id: 27, size: 0.63, frame_id: "CAMP SITE #2"},
+      {id: 29, size: 0.63, frame_id: "CAMP SITE #3"},
+      {id: 16, size: 0.63, frame_id: "CAMP SITE #4"},
+ <!--     {id: 4, size: 0.163513, frame_id: "PACKAGE DROP SITE DETECTED"},
+      {id: 5, size: 0.163513, frame_id: "JOINT TAG"},
+      {id: 6, size: 0.163513},
+      {id: 7, size: 0.163513},
+      {id: 8, size: 0.163513},
+      {id: 9, size: 0.163513},
+      {id: 10, size: 0.163513},
+      {id: 11, size: 0.163513},
+      {id: 12, size: 0.163513},
+      {id: 13, size: 0.163513},
+      {id: 14, size: 0.163513},
+      {id: 15, size: 0.163513},
+      {id: 16, size: 0.163513},
+      {id: 17, size: 0.163513},
+      {id: 18, size: 0.163513},
+      {id: 19, size: 0.163513},
+      {id: 20, size: 0.163513},
+      {id: 21, size: 0.163513},
+      {id: 22, size: 0.163513},
+      {id: 23, size: 0.163513},
+      {id: 24, size: 0.163513},
+      {id: 25, size: 0.163513},
+      {id: 26, size: 0.163513,frame_id: "APRIL TAGS DEMO"},
+      {id: 27, size: 0.163513},
+      {id: 28, size: 0.163513},
+      {id: 29, size: 0.163513},
+      {id: 30, size: 0.163513}    -->
+]
+    </rosparam>
+	<!--<rosparam param="apriltags_family">"16h5"</rosparam>-->
+  </node>
+</launch>
