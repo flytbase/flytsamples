@@ -36,9 +36,9 @@ Two drones, scouter and rescuer.
          rosrun apriltags
   
 **Mission**:
-1. Keep scouter and rescuer close to each other, facing in same direction. Open web app on laptop, put ip address of both drones in app, upon connection you will see gps position on map. 
-2. lay down printed tags on ground, if front of the drone. Scouter will cover rectangular area (MxN) in front of drone, with current drone position as one vertex of rectangle. Side M is in the front direction of drone, side N is in right direction of drone.
-3. Switch both drones to offboard mode.
-4. click on 'deploy drones', configure parameters. in 'scout area', first argument is side M in meters, second argument is side N in meters. Height is relative height from ground, keep step size 1.0, 'Target camp site' is the tag id of high priority camp site where rescuer drone will be sent.
-5. Scouter will be deployed after ~6 secs. When high priority campsite is detected, the rescuer drone will be sent to that camp site.
-6. Upon completion scouter will land at the diagonally opposite vertex of rectangular area, rescuer will land back at home position after hovering above camp site for x secs. 
+  1. Keep scouter and rescuer close to each other, facing in same direction. Open web app on laptop, put ip address of both drones in app, upon connection you will see gps position on map. 
+  2. lay down printed tags on ground, if front of the drone. Scouter will cover rectangular area (MxN) in front of drone, with current drone position as one vertex of rectangle. Side M is in the front direction of drone, side N is in right direction of drone.
+  3. Switch both drones to offboard mode.
+  4. click on 'deploy drones', configure parameters. in 'scout area', first argument is side M in meters, second argument is side N in meters. Height is relative height from ground, keep step size 1.0, 'Target camp site' is the tag id of high priority camp site where rescuer drone will be sent.
+  5. Scouter will be deployed after ~6 secs. When high priority campsite is detected, the rescuer drone will be sent to that camp site.
+  6. Upon completion scouter will land at the diagonally opposite vertex of rectangular area, rescuer will land back at home position after hovering above camp site for x secs. 
