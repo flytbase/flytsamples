@@ -28,9 +28,9 @@ Cordova Hooks represent special scripts which could be added by application and 
 
 ## Introduction
 
-Flyt Follow-Me is a Cordova based application with Ionic framework.
-With this application you can make your drone follow you. The drone
-uses your device's location and follows its movements.
+Flyt Follow-Me is a GPS based follow-me app. With this application you can make your drone follow you. The drone
+uses your device's location and follows its movements. It is a Cordova based application with Ionic framework.
+
 
 
 [Click here](http://docs.flytbase.com/docs/FlytApps/Web_MobileApps.html) to
