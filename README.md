@@ -15,10 +15,5 @@ Note that FlytSIM does not yet work on SBC with ARM arch. So you will have to in
 For hardware setup you can use Pixhawk + Odroid XU4. This link can help you out. http://dev.ardupilot.com/wiki/odroid-via-mavlink/
 
 Use our forums at http://forums.flytbase.com/ for any issues.
+
 Join our facebook group to get in touch with the FlytOS application developers community. https://www.facebook.com/groups/flytos/
-
-Join the flytOS dev and users group on DIYD to get notified about more demos at http://diydrones.com/group/flytos
-
-
-
-
