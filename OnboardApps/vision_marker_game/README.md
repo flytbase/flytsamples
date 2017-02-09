@@ -17,4 +17,5 @@ it opens sepearate windows for hue, saturation and value(shape). Tweak those val
 to get best tracking of your object. Manually edit these values in detector.py for each object. 
 Remember you will have to do this twice. 
 
-If you face any problems use forums. http://forums.flytbase.com/viewforum.php?f=11
+If you face any problems use forums. http://forums.flytbase.com/c/developers/onboard-apps
+Join our facebook group to get in touch with FlytOS application developers community. https://www.facebook.com/groups/flytos/
