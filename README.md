@@ -1,6 +1,6 @@
 # flytsamples
 
-These are sample scripts written using FlytAPIs in ROS, CPP, Python, RESTFull, WebSockets.
+These are sample scripts written using FlytAPIs in ROS, CPP, Python, RESTFul, WebSockets.
 
 FlytOS abstracts drone autopilot's navigation, setup functions to a SBC(companion computer) in the form for FlytAPIs.
 FlytOS uses ROS at its core and exposes APIs for non ros users as well.
@@ -12,7 +12,7 @@ You can try out your scripts in flytSIM (based on Px4 SITL) before putting them 
 FlytSIM is available to download at http://flytbase.com/flytos/ 
 Note that FlytSIM does not yet work on SBC with ARM arch. So you will have to install it on your laptop/desktop.
 
-For hardware setup you can use Pixhawk + Odroid XU4. This link can help you out. http://dev.ardupilot.com/wiki/odroid-via-mavlink/
+For hardware setup you can use Pixhawk + Odroid XU4. This link can help you out. http://dev.ardupilot.com/wiki/odroid-via-mavlink/. FlytOS also supports several other companion computers as listed here http://flytbase.com/flytos/
 
 Use our forums at http://forums.flytbase.com/ for any issues.
 
