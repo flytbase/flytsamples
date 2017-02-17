@@ -1,4 +1,4 @@
-# flytsamples
+# Flyt Samples
 
 These are sample scripts written using FlytAPIs in ROS, CPP, Python, RESTFul, WebSockets.
 
