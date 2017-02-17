@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head>
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <title>Follow Me</title>
+</head>
+<body>
+<!--<div class="app">-->
+<!--<h1>Apache Cordova</h1>-->
+<!--<div id="deviceready" class="blink">-->
+<!--<p class="event listening">Connecting to Device</p>-->
+<!--<p class="event received">Device is Ready</p>-->
+<!--</div>-->
+<!--</div>-->
+<div class="top-bar">
+    <label style="font-weight:normal;">Follow Me </label>
+
+
+    <div class="telemetry">
+        <div class="alt">Alt:</div>
+        <div class="sat">Sat:</div>
+        <div class="battery">
+            <canvas id="myCanvas" width="30" height="30" style="">
+                Your browser does not support the HTML5 canvas tag.</canvas>
+            <!--<img height=" 30px" src="img/battery.png">-->
+        </div>
+        <div class="attitude">
+            <img height=" 30px" src="img/hud.png">
+        </div>
+        <div class="gps">
+            <img height=" 30px"  src="img/gps.png">
+        </div>
+        <div class="connection-status">
+            <img height=" 30px" src="img/disconnected.png">
+        </div>
+    </div>
+</div>
+<div class="battery-window">
+    <label id="voltage">Volt: </label>
+    <label id="current">Current:</label>
+    <label id="remaining">Remaining:</label>
+</div>
+<div class="attitude-window">
+    <div class="hud-house">
+        <div class="sky">
+            <!-- <img src="images/sky.png" width=150px align=middle> -->
+        </div>
+        <div class="rotate">
+            <div class="land">
+                <!-- <img src="images/land.png" width=150px align=middle> -->
+            </div>
+            <div class="scale">
+                <img src="img/roll_gauge.png" width=65px align=middle>
+            </div>
+        </div>
+        <div class="needle">
+            <img src="img/hud-needle.png" width=10px align=middle>
+        </div>
+        <div class="odegree">
+            <img src="img/0degree.png" width=77px align=middle>
+        </div>
+        <div class="hud-moon">
+            <img src="img/hud-moon.png" width=100px align=middle>
+        </div>
+    </div>
+    <div class="hud-data">
+        <!--<div class="row">-->
+        <!--<div class="col-md-5">-->
+        <label class="hud-labels roll-data" >Roll: &nbsp 0.0&#0176; </label>
+        <label class="hud-labels pitch-data" >Pitch: 0.0&#0176; </label>
+        <label class="hud-labels yaw-data" >Yaw: &nbsp 0.0 &#0176; </label>
+        <label class="hud-labels alt-data" >Alt: &nbsp &nbsp  0.0m </label>
+
+        <!--<div class="row"><label class="hud-labels" >Pitch: </label><label class="hud-values pitch-value">0.0</label><label class="hud-units" ></label>-->
+        <!--</div>-->
+        <!--<div class="row"><label class="hud-labels" >Yaw: </label><label class="hud-values yaw-value">0.0</label><label class="hud-units" >°</label>-->
+        <!--</div>-->
+        <!--<div class="row"><label class="hud-labels" >Alt: </label><label class="hud-values alt-value">0.0 </label><label class="hud-units" >m</label>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-6">-->
+        <!--<div class="compass">-->
+        <!--<img  src="img/compass2.png" width=75px align=middle>-->
+        <!--</div>-->
+        <!--<div class="needle2">-->
+        <!--<img src="img/hud-needle.png" width=20px align=middle>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="gps-window">
+    <label id="hdop">HDOP: </label>
+    <label id="satellites">Satellites: </label>
+</div>
+<div class="connection-window">
+    <label id="connection">Disconnected</label>
+</div>
+<div id="map"></div>
+<div class="tak-land-box">
+    <label style="color:white;font-weight:400;">Alt</label>
+    <input id="alt" type="text"   value = "5" style="padding-left:5px; width: 30px;height:23px;border:1px solid red;border-radius:4px;">
+    <button  id="button-takeoff" style="background-color:#ee3c39;border-radius:4px;border:none;height:23px; width:70px;">Take-off</button>
+    <button  id="button-land" style="background-color:#ee3c39;border-radius:4px;border:none; height:23px; width:70px;">Land</button>
+</div>
+<div class="follow-box">
+    <label style="color:white; width:100%;font-weight:400;text-align:center;position:absolute;top:2px;left:0px;">Follow</label>
+    <button class="button start " style="border-radius:4px;border:1px red solid;height:25px; border:none;width:40px;" >
+        <i class="fa fa-play fa-lg"></i>
+        <!--<span>Follow</span>-->
+    </button>
+    <button class="button stop" style="border-radius:4px;border:1px red solid;height:25px; border:none; width:40px;">
+        <i class="fa fa-stop fa-lg"></i>
+        <!--<span>Unfollow</span>-->
+    </button>
+
+</div>
+<div class="nudge-box">
+    <label style="color:black;font-weight:400;text-align:right; width:50%;">Nudge by</label>
+    <input id="offset" type="text"   value = "1" style="padding-left:10px; width: 60px;height:23px;border:1px solid red;border-radius:4px;">
+    <button class="lat-plus " style="position:absolute;top:60px;left:80px;border-radius:4px;border:1px red solid;height:40px; border:none;width:40px;" >
+        <i class="fa fa-plus-square-o fa-lg"></i>
+        <!--<span>Follow</span>-->
+    </button>
+    <button class="long-plus" style="position:absolute;top:105px;left:125px;border-radius:4px;border:1px red solid;height:40px; border:none; width:40px;">
+        <i class="fa fa-plus-square-o fa-lg"></i>
+        <!--<span>Unfollow</span>-->
+    </button>
+
+    <button class="lat-minus" style="position:absolute;top:150px;left:80px;border-radius:4px;border:1px red solid;height:40px; border:none; width:40px;">
+        <i class="fa fa-minus-square-o fa-lg"></i>
+        <!--<span>Unfollow</span>-->
+    </button>
+    <button class="long-minus" style="position:absolute;top:105px;left:35px;border-radius:4px;border:1px red solid;height:40px; border:none; width:40px;">
+        <i class="fa fa-minus-square-o fa-lg"></i>
+        <!--<span>Unfollow</span>-->
+    </button>
+
+</div>
+<button class="locate " ><i class="fa fa-crosshairs "></i></button>
+<button class="nudge " ><i class="fa fa-arrows "></i></button>
+<!--<div id="bottom_bar" style="position:absolute; top:150px; background:black; opacity:0.5;width:100%;height: 10%">-->
+
+    <!--<div class="row">-->
+
+        <!--<div class="col col-20">-->
+            <!--<label class="item item-input" style="position: absolute; left: 10px; top: 5px; width:100px;">-->
+                <!--<span class="input-label"  style="color: white; width:10px;">Set Alt: </span>-->
+                <!--<input input id="alt" type="text"   value = "5" style="padding-left:0px; width: 30%;">-->
+            <!--</label>-->
+            <!--<div class="col col-20" style="position: absolute; left: 100px; top:5px;">-->
+                <!--<button class="button start " >-->
+                    <!--<i class="fa fa-check-square fa-lg"></i>-->
+                    <!--<span>Follow</span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="col col-20" style="position: absolute; left: 200px; top:5px;">-->
+                <!--<button class="button stop" >-->
+                    <!--<i class="fa fa-minus-square fa-lg"></i>-->
+                    <!--<span>Unfollow</span>-->
+                <!--</button>-->
+            <!--</div>-->
+            <!--<div class="row" style="position: absolute; right: 20px; top:5px;">-->
+                <!--<div class="col">-->
+                    <!--<button class=" button locate fa fa-map-marker fa-2x" ></button>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+
+
+
+    <!--</div>-->
+
+<!--</div>-->
+<!--<div class="row">-->
+    <!--<div class="row" style="position:absolute; bottom:50px; right:20px;">-->
+        <!--<div class="col">-->
+            <!--<button class="button take_off " id="button-takeoff" >-->
+                <!--<i class="fa fa-paper-plane fa-lg"></i>-->
+                <!--<span>Fly</span>-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row" style="position: absolute; bottom:20px;right:20px;">-->
+        <!--<div class="col">-->
+            <!--<button class="button land " id="button-land" >-->
+                <!--<i class="fa fa-paper-plane-o fa-lg"></i>-->
+                <!--<span>Land</span>-->
+            <!--</button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+<!--</div>-->
+<!--<div style="text-align:center; display:none;" class="button button-dark button-positive" id="msg" style="width:80%">-->
+<!--<div class="tutorial-window">-->
+<!--<label class="turotial up">Up</label>-->
+<!--<label class="turotial tleft">Turn-left</label>-->
+<!--<label class="turotial tright">Turn-right</label>-->
+<!--<label class="turotial down">Down</label>-->
+<!--<label class="turotial front">Front</label>-->
+<!--<label class="turotial back">Back</label>-->
+<!--<label class="turotial left">Left</label>-->
+<!--<label class="turotial right">Right</label>-->
+
+<!--</div>-->
+<div class="toast"></div>
+<!--<button class="logout btn btn-danger" >Logout</button>-->
+<!--<script type="text/javascript" src="cordova.js"></script>-->
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<!--<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>-->
+<!--<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>-->
+<!--<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+<!--<script type="text/javascript" src="js/jquery-touch.js"></script>-->
+<script type="text/javascript" src="js/eventemitter2.min.js"></script>
+<script type="text/javascript" src="js/roslib.min.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj_GQYaoJ79l_hhishNJc-ZZkSzNWn8nE "></script>
+<script type="text/javascript" src="js/app.js"></script>
+</div>
+</body>
+</html>

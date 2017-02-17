@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head>
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>JoyStick</title>
+</head>
+<body>
+<!--<div class="app">-->
+<!--<h1>Apache Cordova</h1>-->
+<!--<div id="deviceready" class="blink">-->
+<!--<p class="event listening">Connecting to Device</p>-->
+<!--<p class="event received">Device is Ready</p>-->
+<!--</div>-->
+<!--</div>-->
+<div class="top-bar">
+    <label style="font-weight:normal;">JOYSTICK</label>
+    <div class="telemetry">
+        <div class="alt">Alt:</div>
+        <div class="sat">Sat:</div>
+        <div class="battery">
+            <canvas id="myCanvas" width="30" height="30" style="">
+                Your browser does not support the HTML5 canvas tag.</canvas>
+            <!--<img height=" 30px" src="img/battery.png">-->
+        </div>
+        <div class="attitude">
+            <img height=" 30px" src="img/hud.png">
+        </div>
+        <div class="gps">
+            <img height=" 30px"  src="img/gps.png">
+        </div>
+        <div class="connection-status">
+            <img height=" 30px" src="img/disconnected.png">
+        </div>
+    </div>
+</div>
+<div class="battery-window">
+    <label id="voltage">Volt: </label>
+    <label id="current">Current:</label>
+    <label id="remaining">Remaining:</label>
+</div>
+<div class="attitude-window">
+    <div class="hud-house">
+        <div class="sky">
+            <!-- <img src="images/sky.png" width=150px align=middle> -->
+        </div>
+        <div class="rotate">
+            <div class="land">
+                <!-- <img src="images/land.png" width=150px align=middle> -->
+            </div>
+            <div class="scale">
+                <img src="img/roll_gauge.png" width=65px align=middle>
+            </div>
+        </div>
+        <div class="needle">
+            <img src="img/hud-needle.png" width=10px align=middle>
+        </div>
+        <div class="odegree">
+            <img src="img/0degree.png" width=77px align=middle>
+        </div>
+        <div class="hud-moon">
+            <img src="img/hud-moon.png" width=100px align=middle>
+        </div>
+    </div>
+    <div class="hud-data">
+        <!--<div class="row">-->
+            <!--<div class="col-md-5">-->
+        <label class="hud-labels roll-data" >Roll: &nbsp 0.0&#0176; </label>
+        <label class="hud-labels pitch-data" >Pitch: 0.0&#0176; </label>
+        <label class="hud-labels yaw-data" >Yaw: &nbsp 0.0 &#0176; </label>
+        <label class="hud-labels alt-data" >Alt: &nbsp &nbsp  0.0m </label>
+
+                <!--<div class="row"><label class="hud-labels" >Pitch: </label><label class="hud-values pitch-value">0.0</label><label class="hud-units" ></label>-->
+                <!--</div>-->
+                <!--<div class="row"><label class="hud-labels" >Yaw: </label><label class="hud-values yaw-value">0.0</label><label class="hud-units" >°</label>-->
+                <!--</div>-->
+                <!--<div class="row"><label class="hud-labels" >Alt: </label><label class="hud-values alt-value">0.0 </label><label class="hud-units" >m</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="compass">-->
+                    <!--<img  src="img/compass2.png" width=75px align=middle>-->
+                <!--</div>-->
+                <!--<div class="needle2">-->
+                    <!--<img src="img/hud-needle.png" width=20px align=middle>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+<div class="gps-window">
+    <label id="hdop">HDOP: </label>
+    <label id="satellites">Satellites: </label>
+</div>
+<div class="connection-window">
+    <label id="connection">Disconnected</label>
+</div>
+<div class="app-body " >
+    <div class="joystick-zone1">
+        <label class="joystick-labels" style="position:absolute;top:-20px;left:50px;font-weight:400;color:white;text-align:center;width:50%;">UP</label>
+        <label class="joystick-labels" style="position:absolute;bottom:-22px;left:50px;font-weight:400;color:white;text-align:center;width:50%;">DOWN</label>
+        <label class="joystick-labels" style="position:absolute;top:80px;left:-70px;font-weight:400;color:white;text-align:center;width:50%;-ms-transform: rotate(270deg);-webkit-transform: rotate(270deg);transform: rotate(270deg);">TURN<br>LEFT</label>
+        <label class="joystick-labels" style="position:absolute;top:80px;right:-70px;font-weight:400;color:white;text-align:center;width:50%;-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);transform: rotate(90deg);">TURN<br>RIGHT</label>
+        <span class="up-symbol direction-symbol">&#9650;</span>
+        <span class="right-symbol direction-symbol">&#9658;</span>
+        <span class="down-symbol direction-symbol">&#9660;</span>
+        <span class="left-symbol direction-symbol">&#9668;</span>
+        <div class="joystick1"></div>
+    </div>
+    <!--<div class="nnn"></div>-->
+    <div class="joystick-zone2">
+        <label class="joystick-labels" style="position:absolute;top:-20px;left:50px;font-weight:400;color:white;text-align:center;width:50%;">FRONT</label>
+        <label class="joystick-labels" style="position:absolute;bottom:-22px;left:50px;font-weight:400;color:white;text-align:center;width:50%;">BACK</label>
+        <label class="joystick-labels" style="position:absolute;top:90px;left:-60px;font-weight:400;color:white;text-align:center;width:50%;-ms-transform: rotate(270deg);-webkit-transform: rotate(270deg);transform: rotate(270deg);">LEFT</label>
+        <label class="joystick-labels" style="position:absolute;top:90px;right:-60px;font-weight:400;color:white;text-align:center;width:50%;-ms-transform: rotate(90deg);-webkit-transform: rotate(90deg);transform: rotate(90deg);">RIGHT</label>
+        <span class="up-symbol direction-symbol">&#9650;</span>
+        <span class="right-symbol direction-symbol">&#9658;</span>
+        <span class="down-symbol direction-symbol">&#9660;</span>
+        <span class="left-symbol direction-symbol">&#9668;</span>
+        <div class="joystick2"></div>
+    </div>
+
+    <button class="takeoff-button">Take Off</button>
+    <label style="color:white;position:absolute;bottom:5px;left:10px;width:30px;text-align:center;font-weight:400;">Alt:</label>
+    <input type="text" id='height-data' value="5">
+    <button class="land-button">Land</button>
+
+
+</div>
+<div class="toast"></div>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/eventemitter2.min.js"></script>
+<script type="text/javascript" src="js/roslib.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
