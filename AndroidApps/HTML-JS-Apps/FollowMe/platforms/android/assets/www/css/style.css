@@ -570,7 +570,7 @@ h1 {
     left:5px;
     padding:12px;
 }
-.locate, .nudge{
+.locate, .nudge, .video, .start-video{
     position:absolute;
     font-size:20px;
     top:45px;
@@ -581,6 +581,30 @@ h1 {
     border-radius:4px;
     background-color:#ee3c39;
     color:black;
+}
+.start-video{
+    position:absolute;
+    font-size:20px;
+    top:0px;
+    left:280px;
+    height:30px;
+    width:30px;
+    border:none;
+    border-radius:4px;
+    background-color:#ee3c39;
+    color:black;
+}
+.close-video{
+   position:absolute;
+   font-size:20px;
+   top:0px;
+   left:320px;
+   height:30px;
+   width:30px;
+   border:none;
+   border-radius:4px;
+   background-color:#ee3c39;
+   color:black;
 }
 .nudge-box{
     background-color:white;
@@ -595,17 +619,22 @@ h1 {
     top:100px;
     display:none;
 }
-/*
-.tutorial-window{
+.video-box{
     position:absolute;
     height:100%;
     width:100%;
-    opacity:0.7;
     background-color:black;
+    padding:2.5%;
+    display:none;
 }
-label .tutorial{
+#video-page-img{
     position:absolute;
-    font-weight:200;
-    font-size:30px;
-    color:#aaa;
-}*/
+    width:95%;
+    top:60px;
+}
+.select-video-window{
+    display:none;
+    position:absolute;
+    top:60px;
+    width:300px;
+}

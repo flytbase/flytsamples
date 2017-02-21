@@ -19,19 +19,19 @@ $(document).ready(function(){
 });
 
 $(".connect").click(function(){
-    if($(".username").val()==""){
+//    if($(".username").val()==""){
         restPath="http://"+$('.login-url').val();
         wsPath="ws://"+$('.login-url').val();
         auth='false';
         getNamespace();
 
-    }
-    else{
-        restPath="https://"+$(".login-url").val();
-        wsPath="wss://"+$(".login-url").val();
-        login($(".username").val(),$(".password").val());
-        auth='true';
-    }
+//    }
+//    else{
+//        restPath="https://"+$(".login-url").val();
+//        wsPath="wss://"+$(".login-url").val();
+//        login($(".username").val(),$(".password").val());
+//        auth='true';
+//    }
     localStorage.setItem('auth',auth);
     localStorage.setItem('restPath',restPath);
     localStorage.setItem('wsPath',wsPath);

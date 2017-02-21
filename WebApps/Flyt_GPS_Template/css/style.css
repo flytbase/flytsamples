@@ -1,0 +1,113 @@
+
+
+html *
+{
+   /*font-size: 1em !important;
+   color: #000 !important;*/
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+}
+body{
+    background-color:#404041;
+    overflow:hidden;
+}
+.top-bar{
+    text-align:left;
+    height:40px;
+    //margin:-10px;
+    padding-top:10px;
+    padding-left:20px;
+    background-color:#FD4249;
+    font-weight:normal;
+    font-size:20px;
+    color:white;
+}
+
+.top-bar-center{
+    text-align:center;
+    padding-left:0px;
+}
+
+.login-body{
+    position:absolute;
+    top:100px;
+    width:200px;
+    height:300px;
+    float:middle;
+    color:white;
+    text-align:center;
+}
+.login-url{
+    //width:100%;
+    height:35px;
+    border-radius:4px;
+    margin:7px 7px 35px 7px;
+    color:black;
+	text-align: center;
+}
+.login-text{
+   // width:90%;
+    height:35px;
+    border-radius:4px;
+    margin:7px 7px 7px 7px;
+    color:black;
+	text-align: center;
+}
+.login-border{
+    border: 1px solid #fff;
+    border-radius:10px;
+    text-align:center;
+}
+.connect{
+    margin-top: 20px;
+    margin-left:10px;
+}
+.toast{
+    position: absolute;
+    right:25%;
+    bottom: 70px;
+    height: 30px;
+    width: 50%;
+    background-color: black;
+    opacity: 0.9;
+    display:none;
+    color:white;
+    text-align:center;
+    border-radius:6px;
+    padding:5px;
+}
+
+
+
+.app-body{
+    //position:absolute;
+    //top:100px;
+    width:100%;
+    height:100%;
+    float:middle;
+    color:white;
+    text-align:center;
+}
+
+#map {
+     //height: 100%;
+    //margin-top:32px;
+    //margin-top:32px;
+    //left: 150px;
+    height: 97%;
+        position: absolute;
+        //z-index:1000;
+    width:100%;
+}
+
+.locate{
+    position:absolute;
+    font-size:20px;
+    top:45px;
+    left:5px;
+    height:35px;
+    width:35px;
+    border:none;
+    border-radius:4px;
+    background-color:#ee3c39;
+    color:black;
+}
