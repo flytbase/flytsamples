@@ -103,6 +103,11 @@ function getNamespace(){
             window.location.replace("app.html");
         },
         error: function(){
+            $(".toast").html("Login Failed! Retry!!");
+            $(".toast").show();
+            setTimeout(function(){
+                $(".toast").hide(20);
+            },3000);
         }
     });
 }

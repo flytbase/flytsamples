@@ -91,7 +91,7 @@ $(document).ready(function(){
         initMap();
        }
     catch(err){}
-
+    console.log(navigator.geolocation);
     if(navigator.geolocation){
         // timeout at 60000 milliseconds (60 seconds)
         var options = {timeout :2000, enableHighAccuracy: false};
@@ -269,9 +269,7 @@ function positionHold(){
             }
         }
     });
-
 }
-
 
 $("#button-takeoff").click(function(){
     var msgdata={};
@@ -289,7 +287,6 @@ $("#button-takeoff").click(function(){
                 setTimeout(function(){
                     $(".toast").hide(20);
                 },3000);
-
            }
            else{
                 $(".toast").html("Take Off Rejected! Retry!!");
@@ -297,7 +294,6 @@ $("#button-takeoff").click(function(){
                 setTimeout(function(){
                     $(".toast").hide(20);
                 },3000);
-
            }
        },
        error: function(){
@@ -308,9 +304,8 @@ $("#button-takeoff").click(function(){
             },3000);
        }
    });
-
-
 })
+
 $("#button-land").click(function(){
     $.ajax({
            type: "GET",
@@ -373,8 +368,7 @@ function showLocation(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-
-    if(gps_follow){
+    if(gps_follow & position.coords.accuracy<10	){
         console.log("Following");
         followSetpoint(latitude,longitude,parseFloat($("#alt").val()));
     }
