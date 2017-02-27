@@ -7,13 +7,13 @@ drone = api.navigation(timeout=120000) # instance of flyt droneigation class
 time.sleep(3)
 
 print 'taking off'
-drone.take_off(3.0)
+drone.take_off(5.0)
 
 print ' going along the setpoints'
-drone.position_set(5,0,-3)
-drone.position_set(5,5,-3)
-drone.position_set(0,5,-3)
-drone.position_set(0,0,-3)
+drone.position_set(5,0,0,relative=True)
+drone.position_set(0,5,0,relative=True)
+drone.position_set(-5,0,0,relative=True)
+drone.position_set(0,-5,0,relative=True)
 
 print 'Landing'
 drone.land(async=False)
