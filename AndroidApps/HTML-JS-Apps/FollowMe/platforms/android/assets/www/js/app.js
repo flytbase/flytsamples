@@ -1,9 +1,4 @@
 
-var restPath=localStorage.getItem("restPath");
-var wsPath=localStorage.getItem("wsPath");
-var namespace=localStorage.getItem("namespace");
-var token=localStorage.getItem("token");
-var auth=localStorage.getItem("auth");
 var disconnectTimeout,down=0,tright=0,front=0,right=0;
 var oldValues=[0,0,0,0],ctx;
 var watchID;
@@ -55,7 +50,7 @@ $(".connection-status").click(function(){
 
 
 $(document).ready(function(){
-    rosInitialize();
+    getNamespace1();
     get_video_list();
     ctx=$("#myCanvas")[0].getContext("2d");
     ctx.beginPath();
@@ -96,7 +91,7 @@ $(document).ready(function(){
         initMap();
        }
     catch(err){}
-
+    console.log(navigator.geolocation);
     if(navigator.geolocation){
         // timeout at 60000 milliseconds (60 seconds)
         var options = {timeout :2000, enableHighAccuracy: false};
@@ -110,39 +105,6 @@ $(document).ready(function(){
 
 
 });
-
-
-function rosInitialize(){
-    ros = new ROSLIB.Ros({
-      url : wsPath +'/websocket'
-    });
-
-
-    ros.on('connection', function() {
-        console.log('Connected to websocket server.');
-        setTimeout(function(){socketCallback();},3000);
-
-    });
-
-    ros.on('error', function(error) {
-      console.log('Error connecting to websocket server: ', error);
-    });
-
-    ros.on('close', function() {
-      console.log('Connection to websocket server closed.');
-    });
-
-    if(auth){
-	    var rauth = new ROSLIB.Message({
-             "op": "auth",
-             "mac" : localStorage.getItem('token'),
-
-        });
-
-	    ros.authenticate(rauth);
-    }
-}
-
 function socketCallback(){
 
     var listenerBatteryStatus = new ROSLIB.Topic({
@@ -238,7 +200,7 @@ function socketCallback(){
         disconnectTimeout=window.setTimeout(function(){
             $("#connection").html("Disconnected");
             $(".connection-status").children("img").attr("src","img/disconnected.png");
-
+            getNamespace1();
         },5000);
     });
 
@@ -307,9 +269,7 @@ function positionHold(){
             }
         }
     });
-
 }
-
 
 $("#button-takeoff").click(function(){
     var msgdata={};
@@ -327,7 +287,6 @@ $("#button-takeoff").click(function(){
                 setTimeout(function(){
                     $(".toast").hide(20);
                 },3000);
-
            }
            else{
                 $(".toast").html("Take Off Rejected! Retry!!");
@@ -335,7 +294,6 @@ $("#button-takeoff").click(function(){
                 setTimeout(function(){
                     $(".toast").hide(20);
                 },3000);
-
            }
        },
        error: function(){
@@ -346,9 +304,8 @@ $("#button-takeoff").click(function(){
             },3000);
        }
    });
-
-
 })
+
 $("#button-land").click(function(){
     $.ajax({
            type: "GET",
@@ -411,8 +368,7 @@ function showLocation(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-
-    if(gps_follow){
+    if(gps_follow & position.coords.accuracy<10	){
         console.log("Following");
         followSetpoint(latitude,longitude,parseFloat($("#alt").val()));
     }

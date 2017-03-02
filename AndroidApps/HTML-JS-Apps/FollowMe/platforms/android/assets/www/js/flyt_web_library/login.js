@@ -111,3 +111,20 @@ function getNamespace(){
         }
     });
 }
+function getNamespace1(){
+
+    $.ajax({
+        type: "GET",
+        headers: { 'Authentication-Token': localStorage.getItem('token') },
+        dataType: "json",
+        url: restPath+"/ros/get_global_namespace",
+        success: function(data){
+            localStorage.setItem('namespace',data.param_info.param_value);
+
+            rosInitialize();
+        },
+        error: function(){
+           setTimeout(function(){getNamespace1();},1000);
+        }
+    });
+}
