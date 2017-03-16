@@ -1,7 +1,7 @@
 
 var disconnectTimeout,down=0,tright=0,front=0,right=0;
 var oldValues=[0,0,0,0],ctx;
-
+var acceptmoves1=0, acceptmoves2=0;
 $(".battery").click(function(){
     $(".battery-window").toggle(200);
     $(".attitude-window").hide(200);
@@ -214,14 +214,79 @@ $(".joystick-zone1").on('touchmove',(function(e){
     }
 
 }));
-
-
 $(".joystick-zone1").on('touchend',(function(e){
 
     $(".joystick1").attr('style','top:75px;left:75px;');
     tright=0;
     down=0;
 }));
+
+$(".joystick-zone1").mousedown(function(){
+    acceptmoves1=1;
+});
+
+$(".joystick-zone1").mousemove(function(e){
+
+    var pos=$(this).position();
+    if(acceptmoves1){console.log(e.pageX);
+        if(e.pageX>(pos.left-5) && e.pageX<(pos.left+205) && e.pageY>(pos.top-5) && e.pageY<(pos.top+205) ){
+            $(".joystick1").attr('style','top:'+(e.pageY-pos.top-25)+'px;left:'+(e.pageX-pos.left-25)+'px;');
+
+            if (e.pageX>(pos.left+125))tright=0.5;
+            else if (e.pageX<(pos.left+75))tright=-0.5;
+            else tright=0;
+            if (e.pageY>(pos.top+125))down=1;
+            else if (e.pageY<(pos.top+75))down=-1;
+            else down=0;
+            $(".nnn").html(tright +" "+down);
+        }else{
+            acceptmoves1=0;
+            $(".joystick1").attr('style','top:75px;left:75px;');
+            tright=0;
+            down=0;
+        }
+    }
+
+});
+$('body').mouseup(function(){
+
+    acceptmoves1=0;
+    $(".joystick1").attr('style','top:75px;left:75px;');
+    tright=0;
+    down=0;
+    acceptmoves2=0;
+    $(".joystick2").attr('style','top:75px;left:75px;');
+    right=0;
+    front=0;
+
+});
+
+$(".joystick-zone2").mousedown(function(){
+    acceptmoves2=1;
+});
+$(".joystick-zone2").mousemove(function(e){
+
+    var pos=$(this).position();
+    if(acceptmoves2){console.log(e.pageX);
+        if(e.pageX>(pos.left-5) && e.pageX<(pos.left+205) && e.pageY>(pos.top-5) && e.pageY<(pos.top+205) ){
+            $(".joystick2").attr('style','top:'+(e.pageY-pos.top-25)+'px;left:'+(e.pageX-pos.left-25)+'px;');
+
+            if (e.pageX>(pos.left+125))tright=0.5;
+            else if (e.pageX<(pos.left+75))tright=-0.5;
+            else tright=0;
+            if (e.pageY>(pos.top+125))down=1;
+            else if (e.pageY<(pos.top+75))down=-1;
+            else down=0;
+            $(".nnn").html(tright +" "+down);
+        }else{
+            acceptmoves2=0;
+            $(".joystick2").attr('style','top:75px;left:75px;');
+            tright=0;
+            down=0;
+        }
+    }
+
+});
 
 
 $(".joystick-zone2").on('touchmove',(function(e){
