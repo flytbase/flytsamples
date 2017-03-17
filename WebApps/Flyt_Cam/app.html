@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <title>Video Streaming</title>
+</head>
+<body>
+<div class="top-bar">
+    <label style="font-weight:normal;">Video Streaming </label>
+
+
+    <div class="telemetry">
+        <div class="alt">Alt:</div>
+        <div class="sat">Sat:</div>
+        <div class="battery">
+            <canvas id="myCanvas" width="30" height="30" style="">
+                Your browser does not support the HTML5 canvas tag.</canvas>
+        </div>
+        <div class="attitude">
+            <img height=" 30px" src="img/hud.png">
+        </div>
+        <div class="gps">
+            <img height=" 30px"  src="img/gps.png">
+        </div>
+        <div class="connection-status">
+            <img height=" 30px" src="img/disconnected.png">
+        </div>
+    </div>
+</div>
+<div class="battery-window">
+    <label id="voltage">Volt: </label>
+    <label id="current">Current:</label>
+    <label id="remaining">Remaining:</label>
+</div>
+<div class="attitude-window">
+    <div class="hud-house">
+        <div class="sky">
+        </div>
+        <div class="rotate">
+            <div class="land">
+            </div>
+            <div class="scale">
+                <img src="img/roll_gauge.png" width=65px align=middle>
+            </div>
+        </div>
+        <div class="needle">
+            <img src="img/hud-needle.png" width=10px align=middle>
+        </div>
+        <div class="odegree">
+            <img src="img/0degree.png" width=77px align=middle>
+        </div>
+        <div class="hud-moon">
+            <img src="img/hud-moon.png" width=100px align=middle>
+        </div>
+    </div>
+    <div class="hud-data">
+        <label class="hud-labels roll-data" >Roll: &nbsp 0.0&#0176; </label>
+        <label class="hud-labels pitch-data" >Pitch: 0.0&#0176; </label>
+        <label class="hud-labels yaw-data" >Yaw: &nbsp 0.0 &#0176; </label>
+        <label class="hud-labels alt-data" >Alt: &nbsp &nbsp  0.0m </label>
+
+    </div>
+</div>
+<div class="gps-window">
+    <label id="hdop">HDOP: </label>
+    <label id="satellites">Satellites: </label>
+</div>
+<div class="connection-window">
+    <label id="connection">Disconnected</label>
+</div>
+
+<div class="video-box"></div>
+<div class="select-video-window">
+    <label  style='position:absolute;width:120px;font-size:16px;color:white;font-weight:400;padding:5px;padding-right:10px;'>Select video</label>
+    <select id="video-select" style="width: 150px; position:absolute;left:110px; height:30px;border:1px red solid;border-radius:5px;">
+        <option value=0 selected>none</option>
+    </select>
+    <button type="button" class=" start-video" ><i class="fa fa-play"></i> </button>
+    <button type="button" class=" close-video" > <i class="fa fa-times"></i> </button>
+</div>
+<div class="toast"></div>
+<script type="text/javascript" src="js/flyt_web_library/jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript" src="js/flyt_web_library/eventemitter2.min.js"></script>
+<script type="text/javascript" src="js/flyt_web_library/roslib.min.js"></script>
+<script type="text/javascript" src="js/flyt_web_library/rosInitialize.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDj_GQYaoJ79l_hhishNJc-ZZkSzNWn8nE "></script>
+<script type="text/javascript" src="js/app.js"></script>
+</div>
+</body>
+</html>
