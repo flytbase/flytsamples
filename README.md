@@ -1,6 +1,6 @@
 # FlytSamples
 
-These are sample scripts written using FlytAPIs in ROS, CPP, Python, RESTFul, WebSockets.
+These are sample scripts/apps written using FlytAPIs in ROS, C++, Python, RESTful, WebSockets.
 
 FlytOS abstracts drone autopilot's navigation, setup functions to a SBC (companion computer) in the form for FlytAPIs.
 FlytOS uses ROS at its core and exposes APIs for non ros users as well.
