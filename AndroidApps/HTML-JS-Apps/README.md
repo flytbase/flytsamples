@@ -2,6 +2,15 @@
 
 These are sample Android Apps built using Cordova/IntelliJ:
 
+* There are 2 apps available for you to try out:
+1. Joystick app: This is a sample joystick app to control your drone, like you would with any joystick. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
+
+![app-screen](https://cloud.githubusercontent.com/assets/6880872/24093164/74af4bea-0d78-11e7-9a90-760f61dc994a.png)
+
+2. Video streaming app: This is a sample app to view live feed streamed from your drone camera. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
+
+![web-video-app-screen](https://cloud.githubusercontent.com/assets/6880872/24093546/666ad2c8-0d7a-11e7-9871-c6e5c03c12af.png)
+
 * How to RUN
 
 1. Install the APK for the specific App to your mobile device.(link available inside app folder)
@@ -10,7 +19,8 @@ These are sample Android Apps built using Cordova/IntelliJ:
 3. Launch the app providing it appropriate permissions.
 4. Enter the URL of the FlytOS running system in the URL box that shows up and click on connect.
 
-![app-screen](https://cloud.githubusercontent.com/assets/6880872/24093164/74af4bea-0d78-11e7-9a90-760f61dc994a.png)
+![app-login-screen](https://cloud.githubusercontent.com/assets/6880872/24093372/824b77e6-0d79-11e7-88a4-7b80dc7bca78.png)
 
 5. The page redirects to your App.
 
+![app-screen](https://cloud.githubusercontent.com/assets/6880872/24093164/74af4bea-0d78-11e7-9a90-760f61dc994a.png)
