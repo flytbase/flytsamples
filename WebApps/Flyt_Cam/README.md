@@ -1,15 +1,11 @@
-# Follow Me
-This App allows the user to send the drone the its(system running the app) GPS location on click of a button and make the drone follow you. 
+# Video Streaming
+This App allows the user to view live video feed being streamed from a camera mounted on the drone.
 
+## Things to Remember
 
-##Things to Remember
+* Once you have connected to your FlytOS device using the right URL, you will be redirected to the app screen.
 
-* The blue marker shows the location of the drone on the map.
-* The red dot shows the mobile location of the mobile device.
-* Click on the **start** button on the bottom of the screen for the drone to start following you.
-* Click on **stop** to stop the drone from following.
-* Click the **nudge** button on the left side of the screen (first button on the left) to give or remove any offset between you and your drone when at placed at the same location.
-* Click on **zoom** (second button on the left) to pan and zoom to your drone's location.
-* Click on the **video** button(third button on the left) and select a feed from the list and click on play to view the video feed.
-* Click on cross to stop the video feed and come back to map.
-* Keep in mind to stop follow before giving it Land command.
+![video-app-screen](https://cloud.githubusercontent.com/assets/6880872/24093626/c81df1d0-0d7a-11e7-9ca1-2e7c8a556b58.png)
+
+* The dropdown on top is used to select a particular stream from a list of streams.
+* Click on **Play** to start the stream or **Stop** to stop the stream
