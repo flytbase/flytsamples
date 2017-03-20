@@ -3,11 +3,11 @@
 These are sample Android Apps built using Cordova/IntelliJ:
 
 * There are 2 apps available for you to try out:
-1. Joystick app: This is a sample joystick app to control your drone, like you would with any joystick. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
+1. **Joystick app**: This is a sample joystick app to control your drone, like you would with any joystick. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
 
 ![app-screen](https://cloud.githubusercontent.com/assets/6880872/24093164/74af4bea-0d78-11e7-9a90-760f61dc994a.png)
 
-2. Video streaming app: This is a sample app to view live feed streamed from your drone camera. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
+2. **Video streaming app**: This is a sample app to view live feed streamed from your drone camera. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
 
 ![video-app-screen](https://cloud.githubusercontent.com/assets/6880872/24093626/c81df1d0-0d7a-11e7-9ca1-2e7c8a556b58.png)
 
