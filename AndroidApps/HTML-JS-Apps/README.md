@@ -10,7 +10,7 @@ These are sample Android Apps built using Cordova/IntelliJ:
 3. Launch the app providing it appropriate permissions.
 4. Enter the URL of the FlytOS running system in the URL box that shows up and click on connect.
 
-![Alt text](/Joystick/1.png?raw=true | width=100)
+![app-screen](https://cloud.githubusercontent.com/assets/6880872/24093164/74af4bea-0d78-11e7-9a90-760f61dc994a.png)
 
 5. The page redirects to your App.
 
