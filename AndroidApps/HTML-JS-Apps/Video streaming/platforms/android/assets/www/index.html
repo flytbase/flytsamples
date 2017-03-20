@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <title>Video Streaming</title>
+    </head>
+    <body>
+        <div class="top-bar top-bar-center ">
+            <label style="font-weight:normal;">Video Streaming</label>
+        </div>
+        <div class="login-body row" >
+            <div class="row">
+                <input type="text" class="login-url" placeholder="Enter URL">
+            </div>
+            <!--<div class="row login-border">-->
+                <!--<label style="font-weight:normal;">Optional</label>-->
+                <!--<div class="row">-->
+                    <!--<input type="text" class="login-text username" placeholder="Username ">-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<input type="password" class="login-text password" placeholder="Password">-->
+                <!--</div>-->
+            <!--</div>-->
+            <div class="row">
+                <button class="btn btn-primary connect">Connect</button>
+            </div>
+        </div>
+        <div class="toast"></div>
+        <script type="text/javascript" src="js/flyt_web_library/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/flyt_web_library/login.js"></script>
+    </body>
+</html>
