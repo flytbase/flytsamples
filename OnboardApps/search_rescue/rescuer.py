@@ -36,7 +36,8 @@ if fly:
         pass
     print gpos_home_gnd.lat, gpos_home_gnd.lon, gpos_home_gnd.alt, "ground global position"
     lat1, lon1 = gpos_home_gnd.lat, gpos_home_gnd.lon
-    lat2, lon2 = gpos_home_gnd.lat+float(args.lat_off), gpos_home_gnd.lon+float(args.lon_off)
+    # lat2, lon2 = gpos_home_gnd.lat+float(args.lat_off), gpos_home_gnd.lon+float(args.lon_off)
+    lat2, lon2 = float(args.lat_off), float(args.lon_off)
 
     try:
         dist_to_target = gpxpy.geo.haversine_distance(lat1,lon1,lat2,lon2)
@@ -70,8 +71,10 @@ if fly:
 
         print "####################"
         try:
-            lat_target = gpos_home_air.lat+float(args.lat_off)
-            lon_target = gpos_home_air.lon+float(args.lon_off)
+            # lat_target = gpos_home_air.lat+float(args.lat_off)
+            lat_target = float(args.lat_off)
+            # lon_target = gpos_home_air.lon+float(args.lon_off)
+            lon_target = float(args.lon_off)
             print "going to setpoint", lat_target, lon_target, -lpos_home_air.z
             res = drone.position_set_global(lat=lat_target, lon=lon_target, rel_ht=-lpos_home_air.z, tolerance=1.0)
             print "command status", res
