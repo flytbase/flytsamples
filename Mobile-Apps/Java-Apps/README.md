@@ -3,7 +3,7 @@
 These are native Android apps built using java and Android Studio. This approach provides full flexibility in terms of native support for the platform. 
 
 1. **Flyt_Android_SDK**: It is a project with all the required libraries and declaration pre integrated for you, so that you directly start building your app using Flyt-APIs. The first URL screen is pre integrated.
-![screenshot_20170328-121004](https://cloud.githubusercontent.com/assets/6880872/24395018/be069160-13bb-11e7-972b-87a18146902d.png )|height=250,width=250!
+![screenshot_20170328-121004](https://cloud.githubusercontent.com/assets/6880872/24395018/be069160-13bb-11e7-972b-87a18146902d.png )
 
 2. **Joystick app**: This is a sample joystick app to control your drone, like you would with any joystick. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
 
