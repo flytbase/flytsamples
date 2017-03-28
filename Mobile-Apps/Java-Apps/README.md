@@ -25,4 +25,4 @@ These are native Android apps built using java and Android Studio. This approach
 
 5. The page redirects to your App.
 
-![screenshot_20170328-121129](https://cloud.githubusercontent.com/assets/6880872/24395305/cf8de068-13bc-11e7-9dbb-305f88c455e4.png)
+![screenshot_20170328-121103](https://cloud.githubusercontent.com/assets/6880872/24395143/431aab0c-13bc-11e7-8e56-0832494a2e02.png)
