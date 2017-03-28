@@ -3,7 +3,7 @@ This App allows the user to send the drone the its(mobile device running the app
 
 Download the project from [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/Mobile-Apps/Java-Apps/Flyt-Follow-Me)
 
-Download and try out the .apk from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-FollowMe.apk)
+Download and try out the .apk from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/com.example.god.flyt_follow_me.apk)
 
 ##Things to Remember
 
