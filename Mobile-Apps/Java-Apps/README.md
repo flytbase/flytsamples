@@ -1,23 +1,17 @@
 # Android Apps
 
-These are sample Android Apps built using Android Studio:
+These are native Android apps built using java and Android Studio. This approach provides full flexibility in terms of native support for the platform. 
 
-## You can download the apps using the links provided below:
-1. [Flyt_Android_SDK](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/WebApps/Flyt_Web_SDK)
-2. [Flyt_Joystick](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/WebApps/Flyt_Sample)
-3. [Flyt_Follow_me](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/WebApps/Flyt_Joystick)
-
-1. **Flyt_Android_SDK** 
-It is a project with all the required libraries and declaration pre integrated for you, so that you directly start building your app using Flyt-APIs. The first URL screen is pre integrated.
-![web-sdk-url](https://cloud.githubusercontent.com/assets/6880872/24096572/371ea004-0d88-11e7-8603-eabaa27bc81d.png)
+1. **Flyt_Android_SDK**: It is a project with all the required libraries and declaration pre integrated for you, so that you directly start building your app using Flyt-APIs. The first URL screen is pre integrated.
+![screenshot_20170328-121004](https://cloud.githubusercontent.com/assets/6880872/24395018/be069160-13bb-11e7-972b-87a18146902d.png )|height=250,width=250!
 
 2. **Joystick app**: This is a sample joystick app to control your drone, like you would with any joystick. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
 
-![app-screen](https://cloud.githubusercontent.com/assets/6880872/24093164/74af4bea-0d78-11e7-9a90-760f61dc994a.png)
+![screenshot_20170328-121103](https://cloud.githubusercontent.com/assets/6880872/24395143/431aab0c-13bc-11e7-8e56-0832494a2e02.png)
 
 3. **Follow me app**: This is a sample app where when follow me is turned on the drone is sent the GPS coordinates of the device running the app and the drone follows you.
 
-![video-app-screen](https://cloud.githubusercontent.com/assets/6880872/24093626/c81df1d0-0d7a-11e7-9ca1-2e7c8a556b58.png)
+![screenshot_20170328-132219](https://cloud.githubusercontent.com/assets/6880872/24395170/5cbc3472-13bc-11e7-80ac-27bd6cd7be61.png)
 
 * How to RUN
 
@@ -27,8 +21,8 @@ It is a project with all the required libraries and declaration pre integrated f
 3. Launch the app providing it appropriate permissions.
 4. Enter the URL of the FlytOS running system in the URL box that shows up and click on connect.
 
-![app-login-screen](https://cloud.githubusercontent.com/assets/6880872/24093372/824b77e6-0d79-11e7-88a4-7b80dc7bca78.png)
+![screenshot_20170328-121043](https://cloud.githubusercontent.com/assets/6880872/24395190/6bce5a62-13bc-11e7-8d3c-e55ca3e249b7.png)
 
 5. The page redirects to your App.
 
-![app-screen](https://cloud.githubusercontent.com/assets/6880872/24093164/74af4bea-0d78-11e7-9a90-760f61dc994a.png)
+![screenshot_20170328-121129](https://cloud.githubusercontent.com/assets/6880872/24395305/cf8de068-13bc-11e7-9dbb-305f88c455e4.png)
