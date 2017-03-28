@@ -3,7 +3,7 @@ This App allows the user to send the drone velocity setpoints and control the dr
 
 Download the Project from [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/Mobile-Apps/Java-Apps/Flyt-Joystick)
 
-Download and out the .apk from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Joystick.apk) 
+Download and out the .apk from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/com.example.navstik.joystik_n.apk) 
 
 ## Things to Remember
 
