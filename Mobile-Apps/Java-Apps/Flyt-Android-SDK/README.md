@@ -1,6 +1,8 @@
 # Flyt Android SDK
 This App allows you to jump start your drone application development with flyt-android-library preintegrated.
 
+You can download the SDK from [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/Mobile-Apps/Java-Apps/Flyt-Android-SDK)
+
 ## Things to Remember
 
 * All required initialisation have already been made.
