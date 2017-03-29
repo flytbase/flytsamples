@@ -13,10 +13,9 @@ Requirements:
   4. visual servoing webapp.
  
 Setup instructions:
- 1. To setup gimbal on you autopilot refer to the documentation provided by autopilot. E.g. For pixhawk users [visit here.](https://dev.px4.io/advanced-gimbal-control.html#gimbal-control-setup)
- 2. For FlytPOD users only.
-    Update FlytOS to get the Gimbal APIs. Simply connect your FlytPOD to internet (client mode) to update your FlytPOD.
-    After updating change parameter MNT_MODE_IN to 3.0. Check [documentation](http://docs.flytbase.com/docs/FlytPOD/Hardware_specifications.html#gimbal) for Gimbal connection.
+ 1. Update FlytOS to get the Gimbal APIs. Simply connect your FlytPOD/companion computer to internet (client mode) to update. [Visit documentation](http://docs.flytbase.com/docs/FlytOS/GettingStarted/FlytOSUpdate.html#flytos-updates) to know more about automatic updates.
+ 2. Check [documentation](http://docs.flytbase.com/docs/FlytPOD/Hardware_specifications.html#gimbal) for Gimbal connection on FlytPOD.
+    To setup gimbal on you autopilot refer to the [gimbal API documentation.](http://api.flytbase.com/?shell#gimbal-control) 
  3. To verify that everything is setup properly try following service call from terminal on companion computer. Replace namespace with global namespace on your companion computer. 
     `rosservice call /<namespace>/payload/gimbal_set "roll: 0.0 pitch:0.5 yaw:-0.2"`
  4. On companion computer create a folder in home directory.
