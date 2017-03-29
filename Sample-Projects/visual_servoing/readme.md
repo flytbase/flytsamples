@@ -49,6 +49,12 @@ Setup instructions:
  16. Download and copy the folder vis_servoing_web_app to your laptop.
  17. Connect your laptop to the same wifi network as your companion computer. Open the web app in browser.
  18. Follow instructions given below to use the web UI.
+     * Enter the Url to the FlytOS system in the web app and click on connect.
+     * Click on the start button button to get the video stream.
+     * Select an object to track in the video stream.
+     * In the Track/Detect mode on the right hand side select on of the methods circle/detector/TLD and tune their parameters to identify the object according to the method.
+     * In the Inspect mode you can observe the centroid coordinates of the detected object.
+     * In the Visual servoing method you can adjust the parameters to make your camera attached to a gimbal to follow the object in view.
  19. Select an object to track. Gimbal will start following the object as it moves.
  20. If you find the gimbal overshooting or not able to point at the object properly then try changing the PID parameters from the web UI.
  
