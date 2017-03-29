@@ -36,12 +36,12 @@ Setup instructions:
  12. Launch object tracking node.  
     `roslaunch vision_apps object_tracking.launch global_namespace:=flytsim`
  13. If you want to use OpenTLD based tracker then follow instruction given below to run OpenTLD:
-     a. Clone FlytOpenTLD repo from https://github.com/flytbase/flyt_open_tld_3d.git
-     b. It is a ROS project, so compile it using the 'catkin_make' command
-     c. After compilation, source the repo using command 'source \<path to repo\>/devel/setup.bash'
-     d. Launch OpenTLD using command 'roslaunch open_tld_3d open_tld_3d.launch global_namespace:=flytsim'
-     e. Once launched, you can use it through the Flyt Servoing web app
-     f. To get more details on this project, visit 'https://github.com/flytbase/flyt_open_tld_3d/tree/master/src'
+     * Clone FlytOpenTLD repo from https://github.com/flytbase/flyt_open_tld_3d.git
+     * It is a ROS project, so compile it using the 'catkin_make' command
+     * After compilation, source the repo using command 'source \<path to repo\>/devel/setup.bash'
+     * Launch OpenTLD using command 'roslaunch open_tld_3d open_tld_3d.launch global_namespace:=flytsim'
+     * Once launched, you can use it through the Flyt Servoing web app
+     * To get more details on this project, visit 'https://github.com/flytbase/flyt_open_tld_3d/tree/master/src'
  14. Install pid_controller package on companion computer. (You need internet on companion computer for installing this package.)  
      `sudo pip install pid_controller`
  15. In a terminal source vis_servoing package as shown above. Then run visual servoing app.  
