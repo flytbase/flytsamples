@@ -46,7 +46,7 @@ Setup instructions:
      `sudo pip install pid_controller`
  15. In a terminal source vis_servoing package as shown above. Then run visual servoing app.  
      `rosrun vis_servoing vis_servoing.py`
- 16. Download and copy the folder vis_servoing_web_app to your laptop.
+ 16. Download and copy the folder vis_servoing_web_app to your laptop from [here](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/Sample-Projects/visual_servoing/vis_servoing_web_app).
  17. Connect your laptop to the same wifi network as your companion computer. Open the web app in browser.
  18. Follow instructions given below to use the web UI.
      * Enter the Url to the FlytOS system in the web app and click on connect.
