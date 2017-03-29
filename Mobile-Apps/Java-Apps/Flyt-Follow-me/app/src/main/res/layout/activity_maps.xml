@@ -72,6 +72,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="151dp"
         android:padding="10dp"
+        android:visibility="invisible"
         android:id="@+id/nudgeBox"
         android:background="#404041">
 

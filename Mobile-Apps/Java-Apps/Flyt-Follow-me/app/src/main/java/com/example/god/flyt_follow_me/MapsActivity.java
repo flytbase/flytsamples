@@ -165,7 +165,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, new android.location.LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                Log.d("gps data",location.getLatitude()+" "+location.getLongitude()+" "+location.getAccuracy());
+//                Log.d("gps data",location.getLatitude()+" "+location.getLongitude()+" "+location.getAccuracy());
                 if(location.getAccuracy()<10.00 & startFollow ){
                     Log.d("sending commands",startFollow+"");
                     new setGlobalPositionRequest(location.getLatitude(),location.getLongitude(),Double.parseDouble(editTextHt.getText().toString())).execute();
@@ -187,7 +187,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
-        Log.d("dddddddddd",location.getLatitude()+" "+location.getLongitude());
+//        Log.d("dddddddddd",location.getLatitude()+" "+location.getLongitude());
         mLastLocation = location;
 //        Log.d("gps accuracy",location.getAccuracy()+" "+startFollow);
 //        Toast.makeText(getApplicationContext(), location.getLatitude()+" "+location.getLongitude() +" "+location.getAccuracy()+" "+startFollow,Toast.LENGTH_LONG).show();

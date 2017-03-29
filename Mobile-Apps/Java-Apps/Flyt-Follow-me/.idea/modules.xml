@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Flyt-Android-SDK.iml" filepath="$PROJECT_DIR$/Flyt-Android-SDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Flyt-Follow-me.iml" filepath="$PROJECT_DIR$/Flyt-Follow-me.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
