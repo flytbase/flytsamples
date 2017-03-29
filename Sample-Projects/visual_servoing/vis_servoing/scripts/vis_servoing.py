@@ -35,7 +35,7 @@ last_Y_pose = 0.0
 rad_obj_del_X = 0.0
 rad_obj_del_Y = 0.0
 
-v_s_switch = False # Gimbal will not be actuated unless this param is true.
+v_s_switch = False # Gimbal will not be actuated unless this param is true. (Not used anymore)
 
 # Direction of Gimbal control and centroid coordinates. Following diagram is with respect to camera view.
 #   +x
@@ -117,7 +117,7 @@ def param_update_callback(data):
 
 
 if __name__ == "__main__":
-    drone = flytros.FlytDroneAPI('flytsim')
+    drone = flytros.FlytDroneAPI(namespace=None)
     rospy.init_node('vis_servoing')
     # global v_s_switch
     # subscribe to centroid msg.
