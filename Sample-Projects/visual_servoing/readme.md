@@ -16,8 +16,9 @@ Setup instructions:
  1. To setup gimbal on you autopilot refer to the documentation provided by autopilot. E.g. For pixhawk users visit.
  2. For FlytPOD users only.
     Update FlytOS to get the Gimbal APIs. Simply connect your FlytPOD to internet (client mode) to update your FlytPOD.
-    After updating change parameter MNT_IN to 3.0. Check documentation for Gimbal connection.
- 3. To verify that everything is setup properly try following service call. /namespace/payload/gimbal_set . Replace namespace with global namespace on your companion computer. 
+    After updating change parameter MNT_IN to 3.0. Check [documentation](http://docs.flytbase.com/docs/FlytPOD/Hardware_specifications.html#gimbal) for Gimbal connection.
+ 3. To verify that everything is setup properly try following service call from terminal on companion computer. Replace namespace with global namespace on your companion computer. 
+    `rosservice call /<namespace>/payload/gimbal_set "roll: 0.0 pitch:0.5 yaw:-0.2"`
  4. On companion computer create a folder in home directory.
    `mkdir -p catkin_ws/src`
  5. Download and copy vis_servoing folder to caktin_ws/src/ directory.
@@ -32,19 +33,19 @@ Setup instructions:
     `roslaunch vision_apps cam_api.launch`
  10. In case you want to change the camera capture settings, edit following launch file.
     `/flyt/flytos/flytcore/share/vision_apps/launch/cam_api.launch`
- 11. FlyOS vision API's provide two different detection adn tracking algorithms. Color and OpenTLD based.
+ 11. FlyOS vision API's provide two different detection and tracking algorithms. Color and OpenTLD based.
  12. Launch object tracking node.
     `roslaunch`
  13. If you want to use OpenTLD based tracker then follow instruction given below to install OpenTLD.
  14. Install pid_controller package on companion computer. (You need internet on companion computer for installing this package.)
      `sudo pip install pid_controller`
- 14. In a terminal source vis_servoing package as shown above. Then run visual servoing app.
+ 15. In a terminal source vis_servoing package as shown above. Then run visual servoing app.
      `rosrun vis_servoing vis_servoing.py`
- 15. Download and copy the folder vis_servoing_web_app to your laptop.
- 16. Connect your laptop to the same wifi network as your companion computer. Open the web app in browser.
- 17. Follow instructions given below to use the web UI.
- 18. Select an object to track. Gimbal will start following the object as it moves.
- 19. If you find the gimbal overshooting or not able to point at the object properly then try changing the PID parameters from the web UI.
+ 16. Download and copy the folder vis_servoing_web_app to your laptop.
+ 17. Connect your laptop to the same wifi network as your companion computer. Open the web app in browser.
+ 18. Follow instructions given below to use the web UI.
+ 19. Select an object to track. Gimbal will start following the object as it moves.
+ 20. If you find the gimbal overshooting or not able to point at the object properly then try changing the PID parameters from the web UI.
  
  
  Help: 
