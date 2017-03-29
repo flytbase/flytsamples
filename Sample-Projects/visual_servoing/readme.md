@@ -16,29 +16,29 @@ Setup instructions:
  1. Update FlytOS to get the Gimbal APIs. Simply connect your FlytPOD/companion computer to internet (client mode) to update. [Visit documentation](http://docs.flytbase.com/docs/FlytOS/GettingStarted/FlytOSUpdate.html#flytos-updates) to know more about automatic updates.
  2. Check [documentation](http://docs.flytbase.com/docs/FlytPOD/Hardware_specifications.html#gimbal) for Gimbal connection on FlytPOD.
     To setup gimbal on you autopilot refer to the [gimbal API documentation.](http://api.flytbase.com/?shell#gimbal-control) 
- 3. To verify that everything is setup properly try following service call from terminal on companion computer. Replace namespace with global namespace on your companion computer. 
+ 3. To verify that everything is setup properly try following service call from terminal on companion computer. Replace namespace with global namespace on your companion computer.  
     `rosservice call /<namespace>/payload/gimbal_set "roll: 0.0 pitch:0.5 yaw:-0.2"`
- 4. On companion computer create a folder in home directory.
+ 4. On companion computer create a folder in home directory.  
    `mkdir -p catkin_ws/src`
- 5. Download and copy vis_servoing folder to caktin_ws/src/ directory.
- 6. Compile the vis_servoing package.
-    `cd catkin_ws`
-    `catkin_make`
- 7. Source the compiled package.
-    `source devel/setup.bash`
+ 5. Download and copy vis_servoing folder to caktin_ws/src/ directory.  
+ 6. Compile the vis_servoing package.  
+    `cd catkin_ws`  
+    `catkin_make`  
+ 7. Source the compiled package.  
+    `source devel/setup.bash`  
     If you want this packages to be sourced automatically you can add it to bashrc.
  8. Connect camera (which is mounted on gimbal) to companion computer using USB cable. 
- 9. By default FlytOS automatically connects to any camera available at /dev/video0 when it is booting up. If you connected camera after FlytOS was launched then launch the cam_api as shown below.
-    `roslaunch vision_apps cam_api.launch`
- 10. In case you want to change the camera capture settings, edit following launch file.
+ 9. By default FlytOS automatically connects to any camera available at /dev/video0 when it is booting up. If you connected camera after FlytOS was launched then launch the cam_api as shown below.  
+    `roslaunch vision_apps cam_api.launch`  
+ 10. In case you want to change the camera capture settings, edit following launch file.  
     `/flyt/flytos/flytcore/share/vision_apps/launch/cam_api.launch`
  11. FlyOS vision API's provide two different detection and tracking algorithms. Color and OpenTLD based.
- 12. Launch object tracking node.
+ 12. Launch object tracking node.  
     `roslaunch`
  13. If you want to use OpenTLD based tracker then follow instruction given below to install OpenTLD.
- 14. Install pid_controller package on companion computer. (You need internet on companion computer for installing this package.)
+ 14. Install pid_controller package on companion computer. (You need internet on companion computer for installing this package.)  
      `sudo pip install pid_controller`
- 15. In a terminal source vis_servoing package as shown above. Then run visual servoing app.
+ 15. In a terminal source vis_servoing package as shown above. Then run visual servoing app.  
      `rosrun vis_servoing vis_servoing.py`
  16. Download and copy the folder vis_servoing_web_app to your laptop.
  17. Connect your laptop to the same wifi network as your companion computer. Open the web app in browser.
