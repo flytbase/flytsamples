@@ -2,7 +2,7 @@
 
 These are sample Web Apps built using Flyt APIs:
 ## You can download the apps using the links provided below:
-1. [Flyt_Web_SDK](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/WebApps/Flyt_Web_SDK)
+1. [Flyt_Web_SDK](https://flyt.blob.core.windows.net/flytos/downloads/sdk/Flyt_Web_SDK.zip)
 2. [Flyt_Sample](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/WebApps/Flyt_Sample)
 3. [Flyt_Joystick](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/WebApps/Flyt_Joystick)
 4. [Flyt_Cam](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/flytbase/flytsamples/tree/master/WebApps/Flyt_Cam)
