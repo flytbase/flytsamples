@@ -128,7 +128,7 @@ if __name__ == "__main__":
     for i in params.keys():
         val = drone.get_param(params[i])
         if val is not None:
-            print "found existing value for param", params[i], type(val), i
+            print "found existing value for param", params[i], val
             i = val
         else:
             print "creating new param", params[i], i
