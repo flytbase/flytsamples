@@ -1,12 +1,11 @@
 # Obstacle_detection__HCSR04
-Upto 6 HCSR04 sensors with arduino, to detect obstacles from 6 directions, publishing data into ROS.
-
+This  demo app uses upto 6 HCSR04 distance sensors connected to an Arduino, to detect obstacles from 6 directions, and publish the distance data into ROS. Also included is a sample web app that  visualizes live data received from the distance sensor. Please note that this app just makes the distance data available in FlytOS. If you want your drone to have obstacle avoidance capabilities, you will have to write a custom onboard application that consumes the sonar data and produces an obstacle avoidance behavior. 
 
 ![alt tag](https://cloud.githubusercontent.com/assets/10280687/17396651/ff939cdc-5a51-11e6-8a77-9b91d15594bb.JPG)
 
-Arduino samples data from any/all of the 6 sensors at given rate and publishes in ROS. It is Tested on FlytPOD with FlytOS. But should work with any ROS setup. 
+Arduino samples data from any/all of the 6 sensors at given rate and publishes in ROS. The data is made available on the `/sonar` topic in FlytOS. 
 
-**Features:**
+### Features:
   1. Continuous output mode, One time poll mode for quering fresh data.
   2. Select which sensors to listen to from 6 sensors.
   3. Configurable sensor poll rate.
@@ -15,45 +14,77 @@ Contributor: Saumya Saksena, email: f2013114@hyderabad.bits-pilani.ac.in
 Maintainer: Dhiraj, email: dhiraj@navstik.org
 
 
-**Hardware requirements:** HCSR04 ultrasonic sensors, wires, arduino / Tiva C launchpad, USB cable, 5V power source.  
+### Hardware requirements: 
+HCSR04 ultrasonic sensors, wires, Arduino Uno, USB cable, 5V power source.  
 
-**Hardware setup:** 
+### Hardware setup:
   1. Print 3D parts using STL files. 
-  2. Supply all sensors with separate 5V power supply. Arduino can be supplied from USB cable as well.
-  3. wiring information coming soon. 
+  2. Supply all sensors with separate 5V power supply. Arduino can be supplied power from a USB cable connected to the companion computer.
+  3. Connect the echo and trigger pins of the sensors  to the Arduino pins as follows. If you want the ordering to be different, edit the suitable lines in the `sonar_jig_6.ino` file.  
 
-**FlytPOD / ROS side setup:**
-  1. Install rosserial package on your system, by giving the following commands
-      $ sudo apt-get install ros-indigo-rosserial-arduino ros-indigo-rosserial ros-indigo-rosserial-msgs ros-indigo-rosserial-client ros-indigo-rosserial-python
 
-    NOTE: If you are using the TI TIVA C Launchpad for this application, the procedure would be a little bit different. You will have to install rosserial_tivac. You can install rosserial_tivac from source. 
+| Direction     | Echo Pin      | Trigger |
+| ------------- |:-------------:| -------:|
+| Top           | 9             | 2       |
+| Bottom        | 8             | 3       |
+| Rear          | 11            | 6       |
+| Left          | 10            | 7       |
+| Right         | 13            | 4       |
+| Front         | 12            | 5       |
 
-      Navigate to your ROS workspace. Clone the git repository. Then build and install the package.
-      
-      $ cd <workspace_dir>/src
-      $ git clone https://github.com/robosavvy/rosserial_tivac.git
-      $ cd ..
-      $ catkin_make
-      $ catkin_make install
+
+### Arduino Setup:
+
+Install the NewPing and ros_lib Arduino libraries on your computer. You can follow [this link.](http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup) You can then compile and upload the sonar_jig_6.ino file on your Arduino. 
+
+### FlytPOD / ROS side setup:
+  1. Install rosserial package and related dependencies on your FlytPOD/Companion computer by giving the following commands:
+
+```bash
+$ sudo apt-get install ros-kinetic-rosserial-arduino ros-kinetic-rosserial ros-kinetic-rosserial-msgs ros-kinetic-rosserial-client ros-kinetic-rosserial-python
+```
 
   2. Once the required packages are installed, the device becomes more or less plug-n-play. Connect the device to a USB port and the power up the sensors using a suitable power source that provides 5V.
   
-  3. Now data should be published in ROS under topic 'sonar'. From terminal you can test it using
+  3. Now data should be published in ROS under topic 'sonar'. From terminal you can test it first starting the node in your companion computer's terminal using the command:
 
-      $ rosrun rosserial_python serial_node.py /dev/ttyACM0
-      $ rostopic echo sonar
+```bash
+$ rosrun rosserial_python serial_node.py /dev/ttyACM0
+```
 
-    NOTE: If the first command shows that no device found on ACM0, you can disconnect the deivce from the flytpod and give the command again, or you can try with ACM1. Sometimes the ports get switched between the two.
+  And then view the raw data in the CC's terminal by typing:
+
+````
+$ rostopic echo sonar
+````
+
+   NOTE: If the first command shows that no device found on ACM0, you can disconnect the deivce from the companion computer and give the command again, or you can see which port the Arduino shows up as by running the command `ls /dev/ttyACM*` on your companion computer.
   
-  4. Make sure that FlytOS is running. In your browser open <FlytPOD's IP address>:9090/flytsonar
+### Setting up the Web App:
+Refer this [link](http://docs.flytbase.com/docs/FlytOS/Developers/BuildingCustomApps/RemoteWeb.html#deploying-web-app-onboard) on how to deploy a custom webapp. For `flytsonar`, the steps are as follows: 
 
-    You would see the GUI now. Enjoy!    
-    To install the flytSonar app to your FlytOS sd card follow these instrucitons.
+i. Download this source code on your companion computer. 
 
-      i. download the source from <link>
-      ii. Copy the source code to /flyt/flytapps/web/ . You will need to perform this operation as 'sudo' user.
-      iii. edit apps.py file to add an entry to access the app through onboard server.
-      iv. Restart FlytOS.
+ii. Copy the `flytsonar` folder to the location `/flyt/userapps/web_user/` . You will need to perform this operation as a sudo user
+
+iii. Edit `/flyt/useraps/web_user/apps.py` file to add an entry to access the app through onboard server. The contents of the file would be:
+```python
+from flask import Blueprint, render_template, Flask
+from .flytsonar.views import flytsonar
+
+def register_user( main_app ):
+  main_app.register_blueprint(flytsonar,url_prefix='/flytsonar')
+```
+
+iv. Restart FlytOS.
+
+Once FlytOS is running. In your browser open the following link 
+
+```  
+companion-computer's-IP-address/flytsonar
+```
+
+You would see the GUI now. Enjoy!
 
 
 ![alt tag](https://cloud.githubusercontent.com/assets/13434353/17547419/bfc44860-5f04-11e6-85e6-dbfcd2564dbf.png)
