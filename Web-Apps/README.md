@@ -23,8 +23,8 @@ This is a sample joystick app to control your drone, like you would with any joy
   ![web-app-screen](https://cloud.githubusercontent.com/assets/6880872/24096551/18c80258-0d88-11e7-9d3c-4704748b5a2b.png)
 
 
-## Video streaming app
-This is a sample app to view live feed streamed from your drone camera. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
+## Flyt_Cam
+This is a sample video streaming app to view live feed streamed from your drone camera. For documentation on how to connect your app scroll down and for using the app read the readme in the app folder.
 ![web-video-app-screen](https://cloud.githubusercontent.com/assets/6880872/24096608/587888e6-0d88-11e7-90e9-4bf801339b15.png)
 
 
