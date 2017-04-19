@@ -1,6 +1,6 @@
 # FlytSamples
 
-FlytOS abstracts drone autopilot's navigation, setup and high level functions to a companion computer in the form for FlytAPIs. FlytOS uses ROS at its core and exposes APIs for non ros users as well.
+FlytOS abstracts drone autopilot's navigation, setup and high level functions to a companion computer in the form for FlytOS [Drone APIs](http://api.flytbase.com) . FlytOS uses ROS at its core and exposes APIs for non ros users as well.
 FlytSamples are sample scripts/apps written using FlytAPIs in ROS, C++, Python, RESTful and WebSockets. To replicate these samples you need to install recent version of FlytOS for your companion computer. FlytOS supports several companion computers as listed here http://flytbase.com/flytos/. For instructions on setting up FlytOS please refer the [documentation](http://docs.flytbase.com/docs/FlytOS/GettingStarted.html).
 
 **CPP-Python-ROS Apps:**
