@@ -15,6 +15,5 @@ These are web apps that can either be deployed onboard the companion computer (o
 **Sample Projects:**
 These are sample projects built for specific use cases and employ a mix of above Drone APIs. They provide a good demonstration of how onboard and remote apps can be combined to build a complete drone application.
 
-Use our Flytbase [drone forums](http://forums.flytbase.com/) at for any issues. Refer to [FlytBase Detailed documentation]( http://docs.flytbase.com/) to start developing your own applications.
-Join our facebook group to get in touch with the [FlytOS application developers community](https://www.facebook.com/groups/flytos/
+Refer to [FlytBase Detailed documentation]( http://docs.flytbase.com/) to start developing your own applications. Participate in Flytbase [drone forums](http://forums.flytbase.com/) to discuss about your app or to raise any issues. Join our facebook group to get in touch with the [FlytOS application developers community](https://www.facebook.com/groups/flytos/
 ).
