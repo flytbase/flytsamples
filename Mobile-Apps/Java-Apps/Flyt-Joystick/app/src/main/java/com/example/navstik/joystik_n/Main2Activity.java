@@ -1,32 +1,55 @@
 package com.example.navstik.joystik_n;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.CallbackRos;
+import com.example.Ros;
+import com.example.Topic;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOError;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class Main2Activity extends AppCompatActivity {
-    private Button buttonLeft;
-    private Button buttonRight;
-    private Button buttonFront;
-    private Button buttonBack;
+    private ImageButton buttonLeft, buttonRight,buttonFront, buttonBack;
     private Button buttonUp;
     private Button buttonDown;
     private Button buttonTurnLeft;
     private Button buttonTurnRight;
-    private Button buttonTakeOff;
+    private Button buttonTakeOff, buttonTakeOff1;
     private Button buttonLand;
     private String ip;
     private String namespace;
+    private Integer satellites;
+    private Double  altitude;
+    private Handler disconnect = new Handler();
+    private Runnable disconnectRunner;
+    private Boolean  connectionStatus, armStatus;
+    private Ros ros;
+    private Topic gpsData, stateData, localPosData;
+    private EditText editTextHt;
+    private RelativeLayout takeOffBox;
+    private TextView textViewConnectionStatus;
+    private TextView textViewAlt, textViewSat, textViewArmStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +59,13 @@ public class Main2Activity extends AppCompatActivity {
 
         buttonLand = (Button) findViewById(R.id.buttonLand);
         buttonLand.setOnClickListener(buttonLandListener);
-        buttonLeft = (Button) findViewById(R.id.buttonLeft);
+        buttonLeft = (ImageButton) findViewById(R.id.buttonLeft);
         buttonLeft.setOnTouchListener(buttonLeftListener);
-        buttonRight = (Button) findViewById(R.id.buttonRight);
+        buttonRight = (ImageButton) findViewById(R.id.buttonRight);
         buttonRight.setOnTouchListener(buttonRightListener);
-        buttonFront = (Button) findViewById(R.id.buttonFront);
+        buttonFront = (ImageButton) findViewById(R.id.buttonFront);
         buttonFront.setOnTouchListener(buttonFrontListener);
-        buttonBack = (Button) findViewById(R.id.buttonBack);
+        buttonBack = (ImageButton) findViewById(R.id.buttonBack);
         buttonBack.setOnTouchListener(buttonBackListener);
         buttonUp = (Button) findViewById(R.id.buttonUp);
         buttonUp.setOnTouchListener(buttonUpListener);
@@ -52,20 +75,164 @@ public class Main2Activity extends AppCompatActivity {
         buttonTurnLeft.setOnTouchListener(buttonTurnLeftListener);
         buttonTurnRight = (Button) findViewById(R.id.buttonTurnRight);
         buttonTurnRight.setOnTouchListener(buttonTurnRightListener);
+        editTextHt = (EditText) findViewById(R.id.editTextHt);
         buttonTakeOff = (Button) findViewById(R.id.buttonTakeOff);
         buttonTakeOff.setOnClickListener(buttonTakeOffListener);
+        buttonTakeOff1 = (Button) findViewById(R.id.buttonTakeOff1);
+        buttonTakeOff1.setOnClickListener(buttonTakeOff1Listener);
+        takeOffBox= (RelativeLayout) findViewById(R.id.takeOffBox);
+        textViewConnectionStatus = (TextView) findViewById(R.id.textViewConnectionStatus);
+        textViewArmStatus = (TextView) findViewById(R.id.textViewArmStatus);
+        textViewAlt = (TextView) findViewById(R.id.textViewAlt);
+        textViewSat = (TextView) findViewById(R.id.textViewSat);
 
-        Bundle b = getIntent().getExtras();
-        ip=b.getString("ip");
-        namespace=b.getString("namespace");
+        Intent intent = getIntent();
+        ip = intent.getStringExtra("ip");
+        namespace = intent.getStringExtra("namespace");
+
+
+        satellites = new Integer(0);
+        altitude = new Double(0.0);
+        disconnectRunner = new Runnable() {
+            @Override
+            public void run() {
+                connectionStatus = Boolean.FALSE;
+//                imageViewConnectionStatus.setBackgroundColor(Color.RED);
+
+            }
+        };
+
+        rosInitialize();
 
     }
 
+    private View.OnClickListener buttonTakeOff1Listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (takeOffBox.getVisibility() == RelativeLayout.VISIBLE) {
+                takeOffBox.setVisibility(RelativeLayout.INVISIBLE);
+            } else {
+                takeOffBox.setVisibility(RelativeLayout.VISIBLE);
+            }
+        }
+    };
+    private void rosInitialize() {
 
+        ros = new Ros("ws://" + ip + "/websocket");
+        try {
+            ros.connect();
+        }catch(Exception e){}
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    getTelemetryData();
+                }catch(Exception e){}
+            }
+        }, 3000);
+
+
+    }
+
+    public void getTelemetryData() {
+        gpsData = new Topic(ros, "/" + namespace + "/mavros/global_position/global", "sensor_msgs/NavSatFix", 1000);
+        gpsData.subscribe(new CallbackRos() {
+            //callback method- what to do when messages recieved.
+            @Override
+            public void handleMessage(JSONObject message) {
+
+                try {
+
+                    satellites = message.getJSONObject("status").getInt("status");
+
+
+                } catch (JSONException e) {
+                }
+            }
+        });
+
+        stateData = new Topic(ros, "/" + namespace + "/flyt/state", "mavros_msgs/State", 200);
+        stateData.subscribe(new CallbackRos() {
+            @Override
+            public void handleMessage(JSONObject message) {
+                try {
+                    connectionStatus = message.getBoolean("connected");
+                    armStatus= message.getBoolean("armed");
+                } catch (JSONException e) {
+                }
+
+                disconnect.removeCallbacks(disconnectRunner);
+                disconnect.postDelayed(disconnectRunner, 3000);
+            }
+        });
+
+        localPosData = new Topic(ros, "/" + namespace + "/mavros/local_position/local", "geometry_msgs/TwistStamped", 200);
+        localPosData.subscribe(new CallbackRos() {
+            @Override
+            public void handleMessage(JSONObject message) {
+                try {
+                    altitude = message.getJSONObject("twist").getJSONObject("linear").getDouble("z");
+                } catch (JSONException e) {
+                }
+            }
+        });
+        callAsynchronousTask();
+    }
+
+    private void updateConnectionStatus() {
+        if (connectionStatus) {
+            textViewConnectionStatus.setBackgroundColor(Color.GREEN);
+            textViewConnectionStatus.setText("Online");
+        } else {
+            rosInitialize();
+            textViewConnectionStatus.setBackgroundColor(Color.RED);
+            textViewConnectionStatus.setText("Offline");
+        }
+        textViewConnectionStatus.setTextColor(Color.WHITE);
+
+    }
+
+    private void updateAltSat() {
+
+        textViewAlt.setText("Alt: " + String.format("%.2f", altitude * -1)+" m");
+        textViewSat.setText("Sat: " + satellites);
+    }
+    public void updateArmStatus(){
+        if (armStatus) {
+            textViewArmStatus.setText("Armed");
+        } else {
+            textViewArmStatus.setText("Disarmed");
+        }
+        textViewArmStatus.setTextColor(Color.WHITE);
+    }
+    public void callAsynchronousTask() {
+        final Handler handler = new Handler();
+        Timer timer = new Timer();
+        TimerTask doAsynchronousTask = new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(new Runnable() {
+                    public void run() {
+                        try {
+                            updateConnectionStatus();
+                            updateAltSat();
+                            updateArmStatus();
+
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                        }
+                    }
+                });
+            }
+        };
+        timer.schedule(doAsynchronousTask, 0, 1000); //execute in every 50000 ms
+    }
     private View.OnClickListener buttonTakeOffListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            new TakeOffRequest().execute();
+            new TakeOffRequest(Double.parseDouble(editTextHt.getText().toString())).execute();
+            takeOffBox.setVisibility(RelativeLayout.INVISIBLE);
         }
     };
     private View.OnClickListener buttonLandListener = new View.OnClickListener() {
@@ -253,8 +420,7 @@ public class Main2Activity extends AppCompatActivity {
                 String response = restTemplate.postForObject(url, param1.toString(), String.class);
 
                 return response;
-            } catch (Exception e) {
-                Log.e("MainActivity", e.getMessage(), e);
+            } catch (Exception | IOError e) {
             }
 
             return null;
@@ -285,6 +451,11 @@ public class Main2Activity extends AppCompatActivity {
     }
 
     private class TakeOffRequest extends AsyncTask<Void, Void, String> {
+        private Double takeoff_alt;
+
+        public TakeOffRequest(Double val) {
+            takeoff_alt = val;
+        }
         @Override
         protected String doInBackground(Void... params) {
             try {
@@ -293,7 +464,7 @@ public class Main2Activity extends AppCompatActivity {
                 final String url = "http://"+ip+"/ros/"+namespace+"/navigation/take_off";
                 //params in json
                 JSONObject param= new JSONObject();
-                param.put("takeoff_alt",7.00);
+                param.put("takeoff_alt",takeoff_alt);
 
                 //restTemplate object initialise for rest call
                 RestTemplate restTemplate = new RestTemplate();
@@ -318,16 +489,19 @@ public class Main2Activity extends AppCompatActivity {
                     JSONObject resp = new JSONObject(response);
                     //extract the required field from the JSON object
 //                    namespace=resp.getJSONObject("param_info").getString("param_value");
-                    Log.d("namespace",resp.toString());
-                    Toast.makeText(getApplicationContext(),"command sent.",Toast.LENGTH_SHORT).show();
+                    if (resp.getBoolean("success")) {
+                        Toast.makeText(getApplicationContext(), "Taking Off.", Toast.LENGTH_SHORT).show();
 
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Take Off rejected.", Toast.LENGTH_SHORT).show();
+                    }
 
 
                 } catch (JSONException  | NullPointerException e) {
                 }
 
             }else{
-                Toast.makeText(getApplicationContext(),"Unable to connect. Retry!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Failed to contact FlytPOD. Retry Take Off!", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -338,19 +512,16 @@ public class Main2Activity extends AppCompatActivity {
             try {
                 //Rest url
                 final String url = "http://"+ip+"/ros/"+namespace+"/navigation/land";
-                //params in json
-                JSONObject param= new JSONObject();
-//                param.put("takeoff_alt",3.00);
 
                 //restTemplate object initialise for rest call
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
                 // make the rest call and recieve the response in "response"
-                String response = restTemplate.postForObject(url,param.toString(), String.class);
+                String response = restTemplate.getForObject(url, String.class);
 
                 return response;
-            } catch (Exception  e) {
-                Log.e("MainActivity", e.getMessage(), e);
+            } catch (Exception  |IOError e) {
+
             }
             return null;
         }
@@ -364,15 +535,18 @@ public class Main2Activity extends AppCompatActivity {
                     JSONObject resp = new JSONObject(response);
                     //extract the required field from the JSON object
 //                    namespace=resp.getJSONObject("param_info").getString("param_value");
-                    Log.d("namespace",resp.toString());
-                    Toast.makeText(getApplicationContext(),"command sent.",Toast.LENGTH_SHORT).show();
+                    if (resp.getBoolean("success")) {
+                        Toast.makeText(getApplicationContext(), "Landing", Toast.LENGTH_SHORT).show();
 
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Land rejected.", Toast.LENGTH_SHORT).show();
+                    }
 
                 } catch (JSONException | NullPointerException e) {
                 }
 
             }else{
-                Toast.makeText(getApplicationContext(),"Unable to connect. Retry!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Failed to contact FlytPOD. Retry Land!", Toast.LENGTH_SHORT).show();
 
             }
         }
@@ -396,8 +570,7 @@ public class Main2Activity extends AppCompatActivity {
                 String response = restTemplate.postForObject(url,param.toString(), String.class);
 
                 return response;
-            } catch (Exception  e) {
-                Log.e("MainActivity", e.getMessage(), e);
+            } catch (Exception  |IOError e) {
             }
             return null;
         }

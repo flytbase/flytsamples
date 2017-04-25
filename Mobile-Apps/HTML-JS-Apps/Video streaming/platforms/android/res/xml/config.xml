@@ -7,7 +7,7 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>Flyt FollowMe</name>
+    <name>Flyt Cam</name>
     <description>
         A sample Follower App for FlytOS.
     </description>

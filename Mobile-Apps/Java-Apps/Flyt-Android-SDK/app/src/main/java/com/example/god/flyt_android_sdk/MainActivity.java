@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
 
                 return response;
             } catch (Exception  e) {
-                Log.e("MainActivity", e.getMessage(), e);
             }
 
             return null;
@@ -131,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 } catch (JSONException  | NullPointerException e) {
+                    Toast.makeText(getApplicationContext(),"Unable to connect. Check IP!",Toast.LENGTH_SHORT).show();
                 }
 
 

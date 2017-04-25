@@ -13,58 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <TextView
-        android:text="Ht:"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:id="@+id/textView2"
-        android:padding="5dp"
-        android:layout_alignBottom="@+id/editTextHt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="12dp"
-        android:background="#fff" />
-
-    <EditText
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/editTextHt"
-        android:background="#fff"
-        android:layout_alignBottom="@+id/buttonTakeOff"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_marginBottom="6dp"
-        android:text="5.0"
-        android:padding="5dp"
-        android:textSize="14sp"
-        tools:textSize="14sp"
-        android:singleLine="true" />
-
-    <Button
-        android:text="Take Off"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/buttonTakeOff"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="0dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/editTextHt"
-        android:layout_toEndOf="@+id/editTextHt"/>
-
-    <Button
-        android:text="Land"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="5dp"
-        android:layout_marginEnd="5dp"
-        android:id="@+id/buttonLand" />
-
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -77,7 +25,7 @@
         android:background="#404041">
 
         <ImageButton
-            android:src="@drawable/cast_ic_mini_controller_play"
+            android:src="@mipmap/up_arrow"
             android:layout_width="wrap_content"
             android:layout_height="65dp"
             android:id="@+id/buttonNudgeLatP"
@@ -137,68 +85,190 @@
         android:layout_width="40dp"
         android:layout_height="60dp"
         android:id="@+id/buttonNudgeToggle"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_centerVertical="true" />
 
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/buttonNudgeToggle"
-        android:layout_alignStart="@+id/buttonNudgeToggle"
-        android:layout_marginTop="13dp"
-        android:id="@+id/imageViewConnectionStatus"
-        android:background="@android:color/holo_red_dark" />
+        android:layout_centerHorizontal="true"
+        android:layout_height="50dp"
+        android:background="@color/cast_expanded_controller_background_color"
+        android:padding="10dp">
 
-    <ToggleButton
-        android:text="Follow"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:id="@+id/toggleButtonFollow"
+        <TextView
+            android:text="offline"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:id="@+id/textViewConnectionStatus"
+            android:padding="5dp"
+            android:layout_weight="0.45"
+            tools:background="@android:color/holo_red_dark"
+            android:textColor="@color/cast_expanded_controller_ad_container_white_stripe_color"
+            tools:textColor="@android:color/white"
+            android:layout_marginLeft="11dp"
+            android:layout_marginEnd="11dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:id="@+id/textViewArmStatus"
+            android:layout_weight="0.45"
+            android:padding="5dp"
+            tools:textColor="@android:color/white"
+            android:layout_marginLeft="11dp"
+            android:layout_marginEnd="11dp"
+            android:textAlignment="center"
+            android:background="#444"/>
+
+        <TextView
+            android:text="Alt: "
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:id="@+id/textViewAlt"
+            android:padding="5dp"
+            android:background="#fff"
+            android:layout_alignBottom="@+id/imageViewConnectionStatus"
+            android:layout_toRightOf="@+id/buttonNudgeToggle"
+            android:layout_toEndOf="@+id/buttonNudgeToggle"
+            android:layout_weight="0.45" />
+
+        <TextView
+            android:text="Sat: "
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:id="@+id/textViewSat"
+            android:padding="5dp"
+            android:background="#fff"
+            android:layout_alignBaseline="@+id/textViewAlt"
+            android:layout_alignBottom="@+id/textViewAlt"
+            android:layout_toRightOf="@+id/textViewAlt"
+            android:layout_toEndOf="@+id/textViewAlt"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_weight="0.45" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/cast_expanded_controller_background_color"
+        android:padding="3dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/nudgeBox"
-        android:layout_marginRight="5dp"
-        android:layout_alignEnd="@+id/nudgeBox" />
+        android:layout_alignParentStart="true">
 
-    <TextView
-        android:text="Follow"
-        android:layout_width="60dp"
-        android:layout_height="25dp"
-        android:id="@+id/textView5"
-        android:padding="5dp"
-        android:background="#fff"
-        android:layout_alignBaseline="@+id/toggleButtonFollow"
-        android:layout_alignBottom="@+id/toggleButtonFollow"
-        android:layout_toRightOf="@+id/buttonTakeOff"
-        android:layout_toEndOf="@+id/buttonTakeOff"
-        android:layout_marginLeft="5dp"
-        android:layout_marginStart="7dp" />
+        <Button
+            android:text="Take Off"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/buttonTakeOff1"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="0dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/editTextHt"
+            android:layout_toEndOf="@+id/editTextHt"
+            android:layout_weight="1" />
 
-    <TextView
-        android:text="Alt: "
-        android:layout_width="60dp"
-        android:layout_height="25dp"
-        android:id="@+id/textViewAlt"
-        android:padding="5dp"
-        android:background="#fff"
-        android:layout_alignBottom="@+id/imageViewConnectionStatus"
-        android:layout_toRightOf="@+id/buttonNudgeToggle"
-        android:layout_toEndOf="@+id/buttonNudgeToggle" />
+        <RelativeLayout
+            android:layout_alignBottom="@+id/nudgeBox"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content">
 
-    <TextView
-        android:text="Sat: "
-        android:layout_width="60dp"
-        android:layout_height="25dp"
-        android:id="@+id/textViewSat"
-        android:padding="5dp"
-        android:background="#fff"
-        android:layout_alignBaseline="@+id/textViewAlt"
-        android:layout_alignBottom="@+id/textViewAlt"
-        android:layout_toRightOf="@+id/textViewAlt"
-        android:layout_toEndOf="@+id/textViewAlt"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp" />
+            <ToggleButton
+                android:text="Follow"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:id="@+id/toggleButtonFollow"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView5" />
+
+            <TextView
+                android:text="Follow"
+                android:id="@+id/textView5"
+                android:padding="5dp"
+                android:background="#404041"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:layout_marginRight="0dp"
+                android:elevation="1dp"
+                android:layout_height="27dp"
+                android:layout_alignBaseline="@+id/toggleButtonFollow"
+                android:layout_alignBottom="@+id/toggleButtonFollow"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="10dp"
+                android:layout_width="60dp"
+                android:textAlignment="center" />
+        </RelativeLayout>
+
+        <Button
+            android:text="Land"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
+            android:id="@+id/buttonLand"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_height="100dp"
+        android:layout_width="200dp"
+        android:layout_alignTop="@+id/buttonNudgeToggle"
+        android:layout_alignStart="@+id/nudgeBox"
+        android:background="#404041"
+        android:id="@+id/takeOffBox"
+        android:visibility="invisible">
+
+        <TextView
+            android:text="Height"
+            android:id="@+id/textView2"
+            android:layout_marginLeft="5dp"
+            android:background="#404041"
+            android:layout_width="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_height="30dp"
+            android:paddingTop="8dp"
+            android:paddingRight="10dp"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/cast_expanded_controller_progress_text_color" />
+
+        <EditText
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/editTextHt"
+            android:background="#fff"
+            android:text="5.0"
+            android:padding="5dp"
+            android:textSize="14sp"
+            tools:textSize="14sp"
+            android:singleLine="true"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_toEndOf="@+id/textView2" />
+
+        <Button
+            android:text="Take Off"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/buttonTakeOff"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:layout_below="@+id/editTextHt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
 
 
 </RelativeLayout>

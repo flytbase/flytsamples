@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.cordova.Flyt_Cam" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Flyt FollowMe</name>
+    <name>Flyt Cam</name>
     <description>
         A sample Follower App for FlytOS.
     </description>

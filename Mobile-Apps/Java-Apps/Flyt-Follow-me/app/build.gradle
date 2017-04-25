@@ -6,10 +6,15 @@ android {
 
     defaultConfig {
         applicationId "com.example.god.flyt_follow_me"
-        minSdkVersion 21
+        minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
+        multiDexEnabled true
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
     buildTypes {
         release {
@@ -37,5 +42,6 @@ dependencies {
     compile 'com.google.android.gms:play-services:10.2.0'
     compile 'com.android.support:design:23.4.0'
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:multidex:1.0.0'
 //    compile 'com.google.android.gms:play-services-appindexing:10.2.0'
 }

@@ -257,7 +257,7 @@ function callVelocity(){
     if (newValues.toString()!=oldValues.toString()){
         if (newValues.toString()==="0,0,0,0"){
             positionHold();
-//            velocitySetpoint(newValues);
+            velocitySetpoint(newValues);
         }
         else
             velocitySetpoint(newValues);
@@ -279,8 +279,7 @@ function velocitySetpoint(values){
     msgdata["async"]=true;
     msgdata["relative"]=false;
     msgdata["body_frame"]=true;
-    //if (values[3]==0 & (values[0]!=0 | values[1]!=0 | values[2]!=0))msgdata["yaw_rate_valid"]=false;
-    if (values[3]==0 )msgdata["yaw_rate_valid"]=false;
+    if (values[3]==0 & (values[0]!=0 | values[1]!=0 | values[2]!=0))msgdata["yaw_rate_valid"]=false;
     else msgdata["yaw_rate_valid"]=true;
 //    msgdata["yaw_rate_valid"]=true;
 //    console.log(msgdata);

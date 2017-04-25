@@ -1,5 +1,6 @@
 package com.example.god.flyt_follow_me;
 
+import android.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,6 +10,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
@@ -24,6 +27,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.IOError;
+import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        checkLocationPermission();
         buttonConnect = (Button) findViewById(R.id.buttonConnect);
         buttonConnect.setOnClickListener(buttonConnectListener);
         editTextIP = (EditText) findViewById(R.id.editTextIP);
@@ -92,9 +98,9 @@ public class MainActivity extends AppCompatActivity {
                 String response = restTemplate.postForObject(url,entity, String.class);
 
                 return response;
-            } catch (Exception  e) {
-                Log.e("MainActivity", e.getMessage(), e);
-                Toast.makeText(getApplicationContext(),"Unable to connect. Retry!",Toast.LENGTH_SHORT).show();
+            } catch (Exception |IOError  e) {
+//                Log.e("MainActivity", e.getMessage(), e);
+//                Toast.makeText(getApplicationContext(),"Unable to connect. Retry!",Toast.LENGTH_SHORT).show();
             }
 
             return null;
@@ -120,7 +126,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
 
 
-                } catch (JSONException  | NullPointerException e) {
+                } catch (Exception| IOError e ) {
+                    Toast.makeText(getApplicationContext(),"Unable to connect. Check IP!",Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -131,6 +138,33 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+    }
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+
+    public boolean checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            // Asking user if explanation is needed
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+                //Prompt the user once explanation has been shown
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
+
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, MY_PERMISSIONS_REQUEST_LOCATION);
+            }
+            return false;
+        } else {
+            return true;
+        }
     }
 //    public void updateRoll(double roll){
 //        roll = Math.round(roll * 100000);

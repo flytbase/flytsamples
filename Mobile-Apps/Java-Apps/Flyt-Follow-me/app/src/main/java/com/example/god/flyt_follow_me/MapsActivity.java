@@ -28,6 +28,7 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -61,6 +62,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOError;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -79,20 +81,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker mDroneLocationMarker;
     private String IP, namespace;
     private Ros ros;
-    private Topic gpsData, stateData, imuData, localPosData;
+    private Topic gpsData, stateData, localPosData;
     private double latitude, longitude;
     private EditText editTextHt;
-    private Button buttonTakeOff;
+    private Button buttonTakeOff, buttonTakeOff1;
     private Button buttonLand;
-    private Boolean startFollow, connectionStatus;
+    private Boolean startFollow, connectionStatus, armStatus;
     private ImageButton buttonNudgeToggle, buttonNudgeLatP, buttonNudgeLatN, buttonNudgeLonP, buttonNudgeLonN;
     private ArrayList<LatLng> dronePoints, devicePoints;
     private GridLayout nudgeBox;
+    private RelativeLayout takeOffBox;
     private Double latOffset, longOffset, altitude;
     private Integer startStoring, satellites;
     private ToggleButton toggleButtonFollow;
-    private ImageView imageViewConnectionStatus;
-    private TextView textViewAlt, textViewSat;
+    private TextView textViewConnectionStatus;
+    private TextView textViewAlt, textViewSat, textViewArmStatus;
     private Handler disconnect = new Handler();
     private Runnable disconnectRunner;
     /**
@@ -115,6 +118,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         editTextHt = (EditText) findViewById(R.id.editTextHt);
         buttonTakeOff = (Button) findViewById(R.id.buttonTakeOff);
         buttonTakeOff.setOnClickListener(buttonTakeOffListener);
+        buttonTakeOff1 = (Button) findViewById(R.id.buttonTakeOff1);
+        buttonTakeOff1.setOnClickListener(buttonTakeOff1Listener);
         buttonLand = (Button) findViewById(R.id.buttonLand);
         buttonLand.setOnClickListener(buttonLandListener);
         buttonNudgeToggle = (ImageButton) findViewById(R.id.buttonNudgeToggle);
@@ -130,7 +135,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         toggleButtonFollow = (ToggleButton) findViewById(R.id.toggleButtonFollow);
         toggleButtonFollow.setOnClickListener(toggleButtonFollowListener);
         nudgeBox = (GridLayout) findViewById(R.id.nudgeBox);
-        imageViewConnectionStatus = (ImageView) findViewById(R.id.imageViewConnectionStatus);
+        takeOffBox= (RelativeLayout) findViewById(R.id.takeOffBox);
+        textViewConnectionStatus = (TextView) findViewById(R.id.textViewConnectionStatus);
+        textViewArmStatus = (TextView) findViewById(R.id.textViewArmStatus);
         textViewAlt = (TextView) findViewById(R.id.textViewAlt);
         textViewSat = (TextView) findViewById(R.id.textViewSat);
         dronePoints = new ArrayList<>();
@@ -144,7 +151,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void run() {
                 connectionStatus = Boolean.FALSE;
-                imageViewConnectionStatus.setBackgroundColor(Color.RED);
+//                imageViewConnectionStatus.setBackgroundColor(Color.RED);
 
             }
         };
@@ -205,9 +212,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (toggleButtonFollow.isChecked()) {
                 startFollow = Boolean.TRUE;
                 Toast.makeText(getApplicationContext(), "Following Started " + startFollow, Toast.LENGTH_SHORT).show();
-                if (mLastLocation.getAccuracy() < 10.00 & startFollow == Boolean.TRUE) {
-                    new setGlobalPositionRequest(mLastLocation.getLatitude(), mLastLocation.getLongitude(), Double.parseDouble(editTextHt.getText().toString())).execute();
-                }
+                try{
+                    if (mLastLocation.getAccuracy() < 10.00 & startFollow == Boolean.TRUE) {
+                        new setGlobalPositionRequest(mLastLocation.getLatitude(), mLastLocation.getLongitude(), Double.parseDouble(editTextHt.getText().toString())).execute();
+                    }else if(mLastLocation.getAccuracy()>=10.00){
+                        Toast.makeText(getApplicationContext(), "Waiting for accurate mobile GPS" ,Toast.LENGTH_LONG).show();
+                    }
+                }catch(Exception e){}
             } else {
                 startFollow = Boolean.FALSE;
             }
@@ -254,8 +265,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             } else {
                 nudgeBox.setVisibility(GridLayout.VISIBLE);
             }
-
-
+        }
+    };
+    private View.OnClickListener buttonTakeOff1Listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (takeOffBox.getVisibility() == RelativeLayout.VISIBLE) {
+                takeOffBox.setVisibility(RelativeLayout.INVISIBLE);
+            } else {
+                takeOffBox.setVisibility(RelativeLayout.VISIBLE);
+            }
         }
     };
 
@@ -263,6 +282,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         public void onClick(View v) {
             new TakeoffRequest(Double.parseDouble(editTextHt.getText().toString())).execute();
+            takeOffBox.setVisibility(RelativeLayout.INVISIBLE);
         }
     };
     private View.OnClickListener buttonLandListener = new View.OnClickListener() {
@@ -276,19 +296,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void rosInitialize() {
 
         ros = new Ros("ws://" + IP + "/websocket");
-        ros.connect();
+        try {
+            ros.connect();
+        }catch(Exception e){}
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                getGPSData();
+                try {
+                    getTelemetryData();
+                }catch(Exception e){}
             }
         }, 3000);
 
 
     }
 
-    public void getGPSData() {
+    public void getTelemetryData() {
         gpsData = new Topic(ros, "/" + namespace + "/mavros/global_position/global", "sensor_msgs/NavSatFix", 1000);
         gpsData.subscribe(new CallbackRos() {
             //callback method- what to do when messages recieved.
@@ -313,6 +337,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void handleMessage(JSONObject message) {
                 try {
                     connectionStatus = message.getBoolean("connected");
+                    armStatus= message.getBoolean("armed");
                 } catch (JSONException e) {
                 }
 
@@ -407,18 +432,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void updateConnectionStatus() {
         if (connectionStatus) {
-            imageViewConnectionStatus.setBackgroundColor(Color.GREEN);
+            textViewConnectionStatus.setBackgroundColor(Color.GREEN);
+            textViewConnectionStatus.setText("Online");
         } else {
-            imageViewConnectionStatus.setBackgroundColor(Color.RED);
+            rosInitialize();
+            textViewConnectionStatus.setBackgroundColor(Color.RED);
+            textViewConnectionStatus.setText("Offline");
         }
+        textViewConnectionStatus.setTextColor(Color.WHITE);
 
     }
 
     private void updateAlt() {
 
-        textViewAlt.setText("Alt: " + String.format("%.2f", altitude * -1));
+        textViewAlt.setText("Alt: " + String.format("%.2f", altitude * -1)+" m");
     }
-
+    public void updateArmStatus(){
+        if (armStatus) {
+            textViewArmStatus.setText("Armed");
+        } else {
+            textViewArmStatus.setText("Disarmed");
+        }
+        textViewArmStatus.setTextColor(Color.WHITE);
+    }
     public void callAsynchronousTask() {
         final Handler handler = new Handler();
         Timer timer = new Timer();
@@ -431,6 +467,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             updateConnectionStatus();
                             updateAlt();
                             updateMap();
+                            updateArmStatus();
 
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
@@ -514,7 +551,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
 
         //stop location updates
         if (mGoogleApiClient != null) {
@@ -634,8 +671,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+        try{
+            client.connect();
+            AppIndex.AppIndexApi.start(client, getIndexApiAction());
+        }catch(Exception e){}
     }
 
     @Override
@@ -644,8 +683,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
+        try {
+            AppIndex.AppIndexApi.end(client, getIndexApiAction());
+
+            client.disconnect();
+        }catch(Exception e){}
     }
 
     private class TakeoffRequest extends AsyncTask<Void, Void, String> {
@@ -677,8 +719,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String response = restTemplate.postForObject(url, entity, String.class);
 
                 return response;
-            } catch (Exception e) {
-                Log.e("Takeoff error", e.getMessage(), e);
+            } catch (Exception |IOError e) {
+//                Log.e("Takeoff error", e.getMessage(), e);
             }
 
             return null;
@@ -734,8 +776,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String response = restTemplate.postForObject(url, entity, String.class);
 
                 return response;
-            } catch (Exception e) {
-                Log.e("Takeoff error", e.getMessage(), e);
+            } catch (Exception |IOError e) {
+//                Log.e("Takeoff error", e.getMessage(), e);
             }
 
             return null;
@@ -814,8 +856,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String response = restTemplate.postForObject(url, entity, String.class);
 
                 return response;
-            } catch (Exception e) {
-                Log.e("global setpoint error", e.getMessage(), e);
+            } catch (Exception |IOError e) {
+//                Log.e("global setpoint error", e.getMessage(), e);
             }
 
             return null;

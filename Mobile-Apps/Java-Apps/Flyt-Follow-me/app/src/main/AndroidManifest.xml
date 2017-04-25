@@ -10,11 +10,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo_web"
+        android:icon="@mipmap/favicon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.god.flyt_follow_me.MainActivity">
+        <activity android:name="com.example.god.flyt_follow_me.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,11 +32,12 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyDPKIlMDHfb2olPUnD8uHfbKCsrvvDr9X4" />
 
          <activity
             android:name="com.example.god.flyt_follow_me.MapsActivity"
-            android:label="@string/title_activity_maps"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+            android:label="@string/title_activity_maps"
+             android:screenOrientation="portrait"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data
             android:name="com.google.android.gms.version"

@@ -22,13 +22,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOError;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonConnect;
     private EditText editTextIP;
-    private Ros ros;
     private String IP;
-    private Intent app;
     private String namespace;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private View.OnClickListener buttonConnectListener=new View.OnClickListener() {
         @Override public void onClick(View v){
             //get IP from User
+            Toast.makeText(getApplicationContext(),"Connecting",Toast.LENGTH_LONG).show();
             IP=editTextIP.getText().toString();
 
             View view = getCurrentFocus();
@@ -75,11 +76,11 @@ public class MainActivity extends AppCompatActivity {
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
                 // make the rest call and recieve the response in "response"
-                String response = restTemplate.postForObject(url, entity, String.class);
+                String response = restTemplate.getForObject(url,  String.class);
 
                 return response;
-            } catch (Exception e) {
-                Log.e("MainActivity", e.getMessage(), e);
+            } catch (Exception |IOError e) {
+
             }
 
             return null;
@@ -96,14 +97,16 @@ public class MainActivity extends AppCompatActivity {
                     //extract the required field from the JSON object
                     namespace = resp.getJSONObject("param_info").getString("param_value");
 
-                    app = new Intent(MainActivity.this, Main2Activity.class);
-                    Bundle b = new Bundle();
-                    b.putString("ip", IP);
-                    b.putString("namespace",namespace );
-                    app.putExtras(b);
-                    startActivity(app);
+                    Toast.makeText(getApplicationContext(),"Connected.",Toast.LENGTH_SHORT).show();
 
-                } catch (JSONException | NullPointerException e) {
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+////                    EditText editText = (EditText) findViewById(R.id.editText);
+                    intent.putExtra("ip", IP);
+                    intent.putExtra("namespace", namespace);
+                    startActivity(intent);
+
+                } catch (Exception| IOError e) {
+                    Toast.makeText(getApplicationContext(),"Unable to connect. Check IP!",Toast.LENGTH_SHORT).show();
                 }
             }else{
                 Toast.makeText(getApplicationContext(),"Unable to connect. Retry!",Toast.LENGTH_SHORT).show();
