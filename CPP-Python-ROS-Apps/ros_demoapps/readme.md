@@ -26,7 +26,7 @@ $ source ~/catkin_ws/devel/setup.bash
 
 ## Executing the apps
 
-To execute the roscpp apps type the following commands in your fligt computer's terminal:
+To execute the roscpp apps type the following commands in your flight computer's terminal:
 ````
 $ rosrun ros_demoapps demoapp1_node
 ````
@@ -36,7 +36,7 @@ $ rosrun ros_demoapps demoapp2_node 3.0
 # here '3.0' is passed as an argument, one could send any other float value.
 ````
 
-And to execute the rospy apps type the following commands in your fligt computer's terminal:
+And to execute the rospy apps type the following commands in your flight computer's terminal:
 
 ````
 $ rosrun ros_demoapps demoapp1.py
