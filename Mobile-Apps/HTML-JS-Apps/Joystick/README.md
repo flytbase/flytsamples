@@ -1,12 +1,12 @@
 # Joystick
 This App allows the user to send the drone velocity setpoints and control the drone as with a regular joystick.
 
-1. Cordova/IntelliJ 
-	Language used: HTML, JS, css.
-	Platforms: Android, IOS, Blackberry..
+1. Cordova/IntelliJ <br>
+	Language used: HTML, JS, css.<br>
+	Platforms: Android, IOS, Blackberry etc.
 
 
-Download and out the .apk from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Joystick.apk) 
+Download the .apk and try out the app from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Joystick.apk) 
 
 ## Things to Remember
 
@@ -18,4 +18,4 @@ Download and out the .apk from [here](https://flyt.blob.core.windows.net/flytos/
 * The left joystick gives the drone commands to move **up down turn-left and turn-right**.
 * The right joystick gives the drone commands to move **front back left and right**.
 * All the commands are given with respect to the drone(front = direction of the nose/front of the drone).
-* The app uses velocity_set API to control the drone.
+* The app uses velocity_set FlytAPI to control the drone.
