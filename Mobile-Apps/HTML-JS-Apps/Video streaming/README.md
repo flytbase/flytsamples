@@ -1,9 +1,9 @@
 # Video Streaming
 This App allows the user to view live video feed being streamed from a camera mounted on the drone.
 
-1. Cordova/IntelliJ 
-	Language used: HTML, JS, css.
-	Platforms: Android, IOS, Blackberry..
+* Cordova/IntelliJ <br>
+	Language used: HTML, JS, CSS.<br>
+	Platforms: Android, IOS, Blackberry etc.
 
 
 Download and try out the .apk from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Cam.apk)
