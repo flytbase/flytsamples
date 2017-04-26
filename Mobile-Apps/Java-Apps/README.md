@@ -9,7 +9,7 @@ These are native Android apps built using java and Android Studio. This approach
 
 ![screenshot_20170328-121103](https://cloud.githubusercontent.com/assets/6880872/24395143/431aab0c-13bc-11e7-8e56-0832494a2e02.png)
 
-3. **Follow me app**: This is a sample follow-me app using GPS based positioning. When follow-me is turned on, the GPS coordinates of the device running the app are sent to the drone and the drone follows you.
+3. **Follow me app**: This is a sample follow-me app using GPS based positioning. When follow-me mode is turned on, the GPS coordinates of the device running the app are used to send position commands to the drone and the drone follows the person carrying the device. 
 
 ![screenshot_20170328-132219](https://cloud.githubusercontent.com/assets/6880872/24395170/5cbc3472-13bc-11e7-80ac-27bd6cd7be61.png)
 
