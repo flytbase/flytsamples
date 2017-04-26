@@ -1,7 +1,7 @@
 # Joystick
 This App allows the user to send the drone velocity setpoints and control the drone as with a regular joystick.
 
-1. Cordova/IntelliJ <br>
+* Cordova/IntelliJ <br>
 	Language used: HTML, JS, css.<br>
 	Platforms: Android, IOS, Blackberry etc.
 
