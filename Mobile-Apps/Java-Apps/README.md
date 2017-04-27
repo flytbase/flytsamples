@@ -2,7 +2,7 @@
 
 These are native Android apps built using java and Android Studio. This approach provides full flexibility in terms of native support for the platform. 
 
-You can download try out the apks from here:
+You can download the SDK for development or try out the apks from here:
 1. [Flyt Android SDK](https://flyt.blob.core.windows.net/flytos/downloads/sdk/Flyt-Android-SDK.zip)
 2. [Flyt Joystick](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Joystick-mode-1.apk) (mode 1)
 3. [Flyt Follow me](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Follow-me.apk)
