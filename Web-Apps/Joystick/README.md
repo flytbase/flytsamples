@@ -1,5 +1,7 @@
 # Joystick
-This App allows the user to send the drone velocity setpoints and control the drone as with a regular joystick.
+This App allows the user to send the drone velocity setpoints and control the drone as with a regular joystick(mode 2).
+
+Download and test out the app from [here](https://flyt.blob.core.windows.net/flytos/downloads/webApps/Joystick.zip).
 
 ## Things to Remember
 
