@@ -1,6 +1,8 @@
 # Flyt Sample
 A sample App to get you started with building your own apps with Takeoff and Land REST calls.
 
+Download and try out the app from [here](https://downloads.flytbase.com/flytos/downloads/webApps/Sample.zip).
+
 ## Things to Remember
 
 * All required initialisation have already been made.
