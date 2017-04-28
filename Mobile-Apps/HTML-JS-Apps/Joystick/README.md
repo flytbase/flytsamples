@@ -1,12 +1,12 @@
 # Joystick
-This App allows the user to send the drone velocity setpoints and control the drone as with a regular joystick.
+This App allows the user to send the drone velocity setpoints and control the drone as with a regular joystick (mode 2).
 
 * Cordova/IntelliJ <br>
 	Language used: HTML, JS, css.<br>
 	Platforms: Android, IOS, Blackberry etc.
 
 
-Download the .apk and try out the app from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Joystick.apk) 
+Download the apk and try out the app from [here](https://downloads.flytbase.com/flytos/downloads/apk/Flyt-Joystick-mode-2.apk) 
 
 ## Things to Remember
 
