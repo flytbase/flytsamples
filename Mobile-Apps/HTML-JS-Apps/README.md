@@ -2,12 +2,16 @@
 
 Web technologies like HTML/JS/CSS can be used to build cross-platform mobile apps using frameworks like Cordova/Phonegap. This section contains sample Android Apps built using Cordova and IntelliJ IDE:
 
-* There are 2 apps available for you to try out:
-1. **Joystick app**: This is a sample joystick app to control your drone, similar to a physical joystick. For documentation on how to connect your app scroll down and for using the app check the readme in the app folder.
+You can download the apk and try out the apps from here:
+* [Joystick](https://downloads.flytbase.com/flytos/downloads/apk/Flyt-Joystick-mode-2.apk)
+* [Video Streaming](https://downloads.flytbase.com/flytos/downloads/apk/Flyt-Cam.apk)
+
+
+1. **Joystick**: This is a sample joystick app(mode 2) to control your drone, similar to a physical joystick. For documentation on how to connect your app scroll down and for using the app check the readme in the app folder.
 
 ![app-screen](https://cloud.githubusercontent.com/assets/6880872/24093164/74af4bea-0d78-11e7-9a90-760f61dc994a.png)
 
-2. **Video Streaming app**: This is a sample app to view live feed streamed from your drone camera. For documentation on how to connect your app scroll down and for using the app check the readme in the app folder.
+2. **Video Streaming**: This is a sample app to view live feed streamed from your drone camera. For documentation on how to connect your app scroll down and for using the app check the readme in the app folder.
 
 ![video-app-screen](https://cloud.githubusercontent.com/assets/6880872/24093626/c81df1d0-0d7a-11e7-9ca1-2e7c8a556b58.png)
 
