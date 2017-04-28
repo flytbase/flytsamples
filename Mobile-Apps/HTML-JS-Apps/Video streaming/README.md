@@ -6,7 +6,7 @@ This App allows the user to view live video feed being streamed from a camera mo
 	Platforms: Android, IOS, Blackberry etc.
 
 
-Download and try out the .apk from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Cam.apk)
+Download and try out the apk from [here](https://downloads.flytbase.com/flytos/downloads/apk/Flyt-Cam.apk)
 
 ## Things to Remember
 
