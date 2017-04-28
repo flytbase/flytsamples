@@ -36,7 +36,7 @@ $(".connect").click(function(){
     localStorage.setItem('restPath',restPath);
     localStorage.setItem('wsPath',wsPath);
 
-    $(".toast").html("Connecting!!!!!!!");
+    $(".toast").html("Connecting!");
     $(".toast").show();
 });
 

@@ -36,7 +36,7 @@ $(".connect").click(function(){
     localStorage.setItem('restPath',restPath);
     localStorage.setItem('wsPath',wsPath);
 
-    $(".toast").html("Connecting!!!!!!!");
+    $(".toast").html("Connecting!");
     $(".toast").show();
 });
 
@@ -81,7 +81,7 @@ function login(user, pass){console.log(user+" "+pass);
             }
 
         },error:function(data){console.log(data);
-            $(".toast").html("Login Failed! Retry!!");
+            $(".toast").html("Login Failed! Retry!");
             $(".toast").show();
             setTimeout(function(){
                 $(".toast").hide(20);

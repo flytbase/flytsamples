@@ -271,12 +271,12 @@ $(".joystick-zone2").mousemove(function(e){
         if(e.pageX>(pos.left-5) && e.pageX<(pos.left+205) && e.pageY>(pos.top-5) && e.pageY<(pos.top+205) ){
             $(".joystick2").attr('style','top:'+(e.pageY-pos.top-25)+'px;left:'+(e.pageX-pos.left-25)+'px;');
 
-            if (e.pageX>(pos.left+125))tright=0.5;
-            else if (e.pageX<(pos.left+75))tright=-0.5;
-            else tright=0;
-            if (e.pageY>(pos.top+125))down=1;
-            else if (e.pageY<(pos.top+75))down=-1;
-            else down=0;
+            if (e.pageX>(pos.left+125))right=1;
+            else if (e.pageX<(pos.left+75))right=-1;
+            else right=0;
+            if (e.pageY>(pos.top+125))front=-1;
+            else if (e.pageY<(pos.top+75))front=1;
+            else front=0;
             $(".nnn").html(tright +" "+down);
         }else{
             acceptmoves2=0;
