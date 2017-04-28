@@ -1,7 +1,7 @@
 # FlytSDK Android 
 This SDK allows you to jump start your drone application development with flyt-android-library preintegrated.
 
-You can download the SDK from [here](https://flyt.blob.core.windows.net/flytos/downloads/sdk/Flyt-Android-SDK.zip)
+You can download the SDK from [here](https://downloads.flytbase.com/flytos/downloads/sdk/Flyt-Android-SDK.zip)
 
 Please refer the [developer documenation](http://docs.flytbase.com/docs/FlytOS/Developers/BuildingCustomApps/RemoteMobile.html#write-remote-mobile) for instructions on building your app using the SDK.
 
