@@ -1,7 +1,7 @@
 # Follow Me
 This is a sample follow-me app using GPS based positioning. When follow-me mode is turned on, the GPS coordinates of the device running the app are used to send position commands to the drone and the drone follows the person carrying the device. 
 
-Download and try out the apk from [here](https://flyt.blob.core.windows.net/flytos/downloads/apk/Flyt-Follow-me.apk)
+Download and try out the apk from [here](https://downloads.flytbase.com/flytos/downloads/apk/Flyt-Follow-me.apk)
 
 ## Things to Remember
 
