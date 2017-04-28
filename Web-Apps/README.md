@@ -6,7 +6,7 @@ This section contains sample web apps built using Flyt APIs:
 ## You can download the apps using the links provided below:
 1. [FlytSDK Web](https://downloads.flytbase.com/flytos/downloads/sdk/Flyt_Web_SDK.zip)
 2. [Sample](https://downloads.flytbase.com/flytos/downloads/webApps/Sample.zip)
-3. [Joystick](https://downloads.flytbase.com/flytos/downloads/webApps/Joystick.zip)
+3. [Joystick](https://downloads.flytbase.com/flytos/downloads/webApps/Joystick.zip)(mode 2)
 4. [Video Streaming](https://downloads.flytbase.com/flytos/downloads/webApps/Video_Streaming.zip)
 
 ## FlytSDK Web
