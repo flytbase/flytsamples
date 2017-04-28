@@ -1,5 +1,8 @@
-# Flyt Web SDK
+# FlytSDK Web
 This App allows you to jump start your drone application development with flyt-web-library and preintegrated.
+
+Download the app start building your app from [here](https://downloads.flytbase.com/flytos/downloads/sdk/Flyt_Web_SDK.zip).
+
 
 ## Things to Remember
 
