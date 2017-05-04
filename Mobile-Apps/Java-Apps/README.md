@@ -17,7 +17,7 @@ You can download the SDK for development or try out the apks from here:
 3. **Follow me**: This is a sample follow-me app using GPS based positioning. When follow-me mode is turned on, the GPS coordinates of the device running the app are used to send position commands to the drone and the drone follows the person carrying the device. 
 <img  style='margin:300px;' src="https://cloud.githubusercontent.com/assets/6880872/24395170/5cbc3472-13bc-11e7-80ac-27bd6cd7be61.png" width="300" >
 
-* How to Run app and Connect to drone
+**How to Run app and Connect to drone**
 
 1. Install the APK for the specific App to your mobile device.(link available inside app folder)
 2. Make sure that your mobile device running the app and the system running FlytOS are on the same network.
