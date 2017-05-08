@@ -15,3 +15,5 @@ Download and test out the app from [here](https://downloads.flytbase.com/flytos/
 * The right joystick gives the drone commands to move **front back left and right**.
 * All the commands are given with respect to the drone(front = direction of the nose/front of the drone).
 * The app uses velocity_set API to control the drone.
+
+Note: Turn-left and turn-right function is not supported in APM
