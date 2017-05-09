@@ -4,7 +4,7 @@ Visual servoing using FlytOS gimbal API.
 This app uses gimbal APIs to control a 3-axis gimbal in order to keep the camera (mounted on gimbal) focused on object of interest in the scene. FlytOS vision APIs are used to detect and track the object. 
 
 Below is a youtube video showing this app running on a FlytPOD.
-[Video Drone API to Control Gimbal] (https://www.youtube.com/watch?v=N7ETTQC1m-g) 
+[Video Drone API to Control Gimbal](https://www.youtube.com/watch?v=N7ETTQC1m-g) 
 
 
 Requirements:
