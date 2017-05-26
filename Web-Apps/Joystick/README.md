@@ -1,5 +1,7 @@
 # Joystick
-This App allows the user to send the drone velocity setpoints and control the drone as with a regular joystick.
+This App allows the user to send the drone velocity setpoints and control the drone as with a regular joystick(mode 2).
+
+Download and test out the app from [here](https://downloads.flytbase.com/flytos/downloads/webApps/Joystick.zip).
 
 ## Things to Remember
 
@@ -13,3 +15,5 @@ This App allows the user to send the drone velocity setpoints and control the dr
 * The right joystick gives the drone commands to move **front back left and right**.
 * All the commands are given with respect to the drone(front = direction of the nose/front of the drone).
 * The app uses velocity_set API to control the drone.
+
+Note: Turn-left and turn-right function is not supported in APM

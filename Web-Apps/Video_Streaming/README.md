@@ -1,6 +1,8 @@
 # Video Streaming
 This App allows the user to view live video feed being streamed from a camera mounted on the drone.
 
+Download and try out the app from [here](https://downloads.flytbase.com/flytos/downloads/webApps/Video_Streaming.zip).
+
 ## Things to Remember
 
 * Once you have connected to your FlytOS device using the right URL, you will be redirected to the app screen.
