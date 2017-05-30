@@ -11,126 +11,23 @@
 
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_marginTop="34dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="text|textAutoComplete"
-        android:ems="10"
+        android:textAlignment="center"
         android:id="@+id/editTextIP"
-        android:editable="true"
-        android:gravity="center"
-        android:layout_marginTop="68dp"
+        android:text="192.168.1."
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <Button
+        android:layout_marginTop="18dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="41dp"
         android:text="Connect"
         android:id="@+id/buttonConnect"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:layout_alignWithParentIfMissing="false"
+        android:layout_gravity="center_horizontal|top"
         android:layout_below="@+id/editTextIP"
         android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Enter IP"
-        android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="NameSpace"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/buttonConnect"
-        android:layout_toLeftOf="@+id/textView"
-        android:layout_toStartOf="@+id/textView"
-        android:layout_marginTop="40dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Roll"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginTop="43dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Pitch"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_marginTop="30dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Yaw"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
-        android:layout_marginTop="39dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textViewRoll"
-        android:minWidth="200dp"
-        android:layout_above="@+id/textView4"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_toRightOf="@+id/textView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textViewPitch"
-        android:minWidth="200dp"
-        android:layout_above="@+id/textView5"
-        android:layout_alignRight="@+id/textViewYaw"
-        android:layout_alignEnd="@+id/textViewYaw"
-        android:layout_alignLeft="@+id/textViewYaw"
-        android:layout_alignStart="@+id/textViewYaw" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textViewYaw"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_alignRight="@+id/textViewRoll"
-        android:layout_alignEnd="@+id/textViewRoll"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/textViewNamespace"
-        android:minWidth="200dp"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_alignRight="@+id/textViewYaw"
-        android:layout_alignEnd="@+id/textViewYaw"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_alignLeft="@+id/textViewRoll"
-        android:layout_alignStart="@+id/textViewRoll" />
 
 </RelativeLayout>

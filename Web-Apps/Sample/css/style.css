@@ -7,19 +7,20 @@ html *
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
 body{
-    background-color:#404041;
+    background-color:#3c515f;
     overflow:hidden;
 }
 .top-bar{
     text-align:left;
-    height:40px;
+    height:45px;
     //margin:-10px;
     padding-top:10px;
     padding-left:20px;
-    background-color:#FD4249;
+    background-color:#3c515f;
     font-weight:normal;
     font-size:20px;
     color:white;
+    border:5px solid white;
 }
 
 .top-bar-center{

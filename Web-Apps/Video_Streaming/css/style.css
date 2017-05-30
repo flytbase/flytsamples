@@ -7,19 +7,20 @@ html *
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
 body{
-    background-color:#404041;
+    background-color:#3c515f;
     overflow:hidden;
 }
 .top-bar{
     text-align:left;
-    height:40px;
+    height:45px;
     //margin:-10px;
     padding-top:10px;
     padding-left:20px;
-    background-color:#FD4249;
+    background-color:#3c515f;
     font-weight:normal;
     font-size:20px;
     color:white;
+    border-bottom:5px solid white;
 }
 
 .top-bar-center{
@@ -45,7 +46,8 @@ body{
     height:32px;
     width:100px;
     border-radius:4px;
-    background-color:#444;
+    background-color:#9DD4F8;
+    color:black;
 }
 .sat{
     position:absolute;
@@ -56,7 +58,8 @@ body{
     height:32px;
     width:60px;
     border-radius:4px;
-    background-color:#444;
+    background-color:#9DD4F8;
+    color:black;
 }
 .battery{
     position:absolute;
@@ -591,8 +594,8 @@ h1 {
     width:30px;
     border:none;
     border-radius:4px;
-    background-color:#ee3c39;
-    color:black;
+    background-color:#B95150;
+    color:white;
 }
 .close-video{
    position:absolute;
@@ -603,8 +606,8 @@ h1 {
    width:30px;
    border:none;
    border-radius:4px;
-   background-color:#ee3c39;
-   color:black;
+   background-color:#B95150;
+   color:white;
 }
 .nudge-box{
     background-color:white;
@@ -623,7 +626,7 @@ h1 {
     position:absolute;
     height:100%;
     width:100%;
-    background-color:black;
+    background-color:#3c515f;
     padding:2.5%;
     /*display:none;*/
 }

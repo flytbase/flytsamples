@@ -7,19 +7,20 @@ html *
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
 }
 body{
-    background-color:#404041;
+    background-color:#3c515f;
     overflow:hidden;
 }
 .top-bar{
     text-align:left;
-    height:40px;
+    height:45px;
     //margin:-10px;
     padding-top:10px;
     padding-left:20px;
-    background-color:#FD4249;
+    background-color:#3c515f;
     font-weight:normal;
     font-size:18px;
     color:white;
+    border-bottom:5px white solid;
 }
 
 .top-bar-center{
@@ -45,7 +46,8 @@ body{
     height:32px;
     width:100px;
     border-radius:4px;
-    background-color:#444;
+    color:black;
+    background-color:#9DD4F8;
 }
 .sat{
     position:absolute;
@@ -56,7 +58,8 @@ body{
     height:32px;
     width:60px;
     border-radius:4px;
-    background-color:#444;
+    color:black;
+    background-color:#9DD4F8;
 }
 .battery{
     position:absolute;
@@ -320,7 +323,7 @@ body{
     width:200px;
     top:100px;
     left:100px;
-    background-color:#ccc;
+    background-color:#ddd;
     border-radius:100px;
 }
 .joystick1, .joystick2{
@@ -347,7 +350,7 @@ body{
     border-radius:5px;
     border:none;
     text-align:center;
-    background-color:#ee3c39;
+    background-color:#B95150;
     width:100px;
     bottom:5px;
     height:30px;
