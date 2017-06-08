@@ -358,7 +358,7 @@ $(".takeoff-button").click(function(){
            }
        },
        error: function(){
-            $(".toast").html("Failed to contact FlytPOD! Retry!!");
+            $(".toast").html("Failed to contact FlytOS! Retry!!");
             $(".toast").show();
             setTimeout(function(){
                 $(".toast").hide(20);
@@ -388,7 +388,7 @@ $(".land-button").click(function(){
                     },3000);
                }
                else{
-                    $(".toast").html("Land Rejected by FlytPOD! Retry!!");
+                    $(".toast").html("Land Rejected by FlytOS! Retry!!");
                     $(".toast").show();
                     setTimeout(function(){
                         $(".toast").hide(20);
@@ -396,7 +396,7 @@ $(".land-button").click(function(){
                }
            },
            error: function(){
-                $(".toast").html("Failed to contact FlytPOD! Retry!!");
+                $(".toast").html("Failed to contact FlytOS! Retry!!");
                 $(".toast").show();
                 setTimeout(function(){
                     $(".toast").hide(20);

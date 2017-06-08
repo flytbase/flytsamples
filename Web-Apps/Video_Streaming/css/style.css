@@ -10,6 +10,34 @@ body{
     background-color:#3c515f;
     overflow:hidden;
 }
+.takeoff-button, .land-button{
+    position:absolute;
+    border-radius:5px;
+    border:none;
+    text-align:center;
+    background-color:#B95150;
+    width:100px;
+    bottom:5px;
+    height:30px;
+}
+.takeoff-button{
+    left:93px;
+}
+.land-button{
+    right:5px;
+}
+
+#height-data{
+    position:absolute;
+    border-radius:5px;
+    border:1px red solid;
+    bottom:5px;
+    left:45px;
+    height:30px;
+    text-align:center;
+    width:40px;
+    color:black;
+}
 .top-bar{
     text-align:left;
     height:45px;
@@ -318,261 +346,8 @@ body{
     bottom:5px;
     border-radius:4px ,4px, 4px, 4px;
 }
-.joystick-zone1 , .joystick-zone2{
-    position:absolute;
-    height:200px;
-    width:200px;
-    top:100px;
-    left:100px;
-    background-color:#222;
-    border-radius:100px;
-}
-/*
-.joystick-button-zone{
-    position:absolute;
-    height:200px;
-    width:200px;
-    top:100px;
-    left:100px;
-    background-color:#222;
-    border-radius:100px;
-}
-.up,.down,.tright,.tleft{
-    position:absolute;
-    height:37px;
-    width:50px;
-    background-color:#FD4249;
-    border:none;
-}
-.up{
-    top:32px;
-    left:75px;
-}
-.tleft{
-    top:84px;
-    left:12px;
-}
-.tright{
-    top:84px;
-    left:138px;
-}
-.down{
-    top:136px;
-    left:75px;
-}*/
-.joystick1, .joystick2{
-    position:absolute;
-    height:50px;
-    width:50px;
-    border-radius:25px;
-    background-color:#999;
-    left:75px;
-    top:75px;
-}
-.app-body{
-    //position:absolute;
-    //top:100px;
-    width:100%;
-    height:100%;
-    float:middle;
-    color:white;
-    text-align:center;
-}
-.takeoff-land-window-button{
-    position:absolute;
-    border-radius:10px 10px 0 0;
-    bottom:0;
-    width:200px;
-    background-color:#222;
-    color:white;
-    height:30px;
-    text-align:center;
-    font-size:25px
-}
-.takeoff-land-window{
-    position:absolute;
-    background-color:black;
-    opacity:0.7;
-    left:40px;
-    top:80px;
-    border-radius:10px;
-    display:none;
 
-}
-.takeoff-window-button, .land-button{
-    border-radius:5px;
-    font-size:20px;
-    text-align:center;
-    background-color:#ee3c39;
-    width:100%;
-}
-.takeoff-window-button{
-    position:absolute;
-    top:0px;
-    width:90%;
-}
-.land-button{
-    position:absolute;
-    bottom:0px;
-    width:90%
-}
-.container{
-    position:absolute;
-    height:100px;
-    width:310px;
-}
-.takeoff-label{
-    top:25px;
-    position:absolute;
-    left:20px;
-    color:white;
-    font-weight:lighter;
-}
-.decrease-button{
-    position:absolute;
-    background-color:#222;
-    left:120px;
-    color:white;
-    font-size:25px;
-    height:32px;
-    padding:0px 0px 15px 10px;
-    width:25px;
 
-}
-#height-data{
-    position:absolute;
-    left:145px;
-    height:30px;
-    text-align:center;
-    width:30px;
-}
-.increase-button{
-    position:absolute;
-    background-color:#222;
-    left:175px;
-    color:white;
-    width:25px;
-    font-size:25px;
-    height:32px;
-    padding:0 5px 15px 5px;
-}
-.takeoff-button{
-    position:absolute;
-    left:210px;
-    width:50px;
-}
-.back-window{
-    position:absolute;
-    width:100%;
-    height:100%;
-}
-.height-window{
-    position:absolute;
-    background-color:#333;
-    top:50px;
-    border-radius:10px;
-    height:70px;
-    width:280px;
-    display:none;
-}
-.direction-symbol{
-    font-size:22px;
-    color:#555;
-    text-align:center;
-    position:absolute;
-}
-.up-symbol{
-    top:25px;
-    left:89px;
-}
-.down-symbol{
-    bottom:25px;
-    left:89px;
-}
-.left-symbol{
-    top:85px;
-    left:25px;
-}
-.right-symbol{
-    top:85px;
-    right:25px;
-}
-.help-window{
-    position:absolute;
-    opacity:0.9;
-    background-color:black;
-    height:100%;
-    width:100%;
-}
-#joy-help-image{
-    position:absolute;
-}
-
-.help-window-button{
-	position:absolute;
-
-    -ms-transform: rotate(270deg); /* IE 9 */
-    -webkit-transform: rotate(270deg); /* Chrome, Safari, Opera */
-    transform: rotate(270deg);
-    top:45%;
-    text-align:center;
-    color:white;
-    background-color:#222;
-    width:100px;
-    border-radius:10px;
-    right:-35px;
-    font-size:20px;
-    height:35px;
-}
-#map {
-     //height: 100%;
-    //margin-top:32px;
-    //margin-top:32px;
-    //left: 150px;
-    height: 97%;
-        position: absolute;
-        //z-index:1000;
-    width:100%;
-}
-#msg{
-position: absolute;
-     top:50%;
-    left:10%;
-    width:80%;
-    height:10%;
-//background: white;
-}
-h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
-}
-.follow-box{
-    position:absolute;
-    height:60px;
-    width:150px;
-    background-color:black;
-    border:1px solid #ee3c39;
-    border-radius:10px;
-    bottom:5px;
-    left:5px;
-    padding-top:25px;
-    padding-left:32px;
-}
-.tak-land-box{
-    position:absolute;
-    height:50px;
-    width:225px;
-    background-color:black;
-    border:1px solid #ee3c39;
-    border-radius:10px;
-    top:45px;
-    left:5px;
-    padding:12px;
-}
 .locate, .nudge, .video, .start-video{
     position:absolute;
     font-size:20px;

@@ -62,6 +62,8 @@ $(document).ready(function(){
     ctx.fillStyle="white";
     ctx.fillText("100",5,18);
     function checkWidth(){
+        $(".takeoff-land-window-button").attr('style',"left:"+(($(window).width()-200)/2)+"px;");
+        $(".takeoff-land-window").attr('style',"width:"+($(window).width()-80)+"px;height:"+($(window).height()-120)+"px;");
         if($(window).width()<$(window).height()){
             $(".sat").hide();
             $(".alt").hide();
@@ -105,6 +107,80 @@ $(document).ready(function(){
 
 
 });
+
+
+$(".takeoff-button").click(function(){
+    var msgdata={};
+    msgdata["takeoff_alt"]=parseFloat($("#height-data").val());
+    $.ajax({
+       type: "POST",
+       headers: { 'Authentication-Token': token },
+       dataType: "json",
+       data: JSON.stringify(msgdata),
+       url: restPath+"/ros/"+namespace+"/navigation/take_off",
+       success: function(data){console.log(data);
+           if(data.success){
+                $(".toast").html("System Taking off!!");
+                $(".toast").show();
+                setTimeout(function(){
+                    $(".toast").hide(20);
+                },3000);
+
+           }
+           else{
+                $(".toast").html("Take Off Rejected! Retry!!");
+                $(".toast").show();
+                setTimeout(function(){
+                    $(".toast").hide(20);
+                },3000);
+
+           }
+       },
+       error: function(){
+            $(".toast").html("Failed to contact FlytPOD! Retry!!");
+            $(".toast").show();
+            setTimeout(function(){
+                $(".toast").hide(20);
+            },3000);
+       }
+   });
+  
+
+})
+$(".land-button").click(function(){
+    $.ajax({
+           type: "GET",
+           headers: { 'Authentication-Token':token },
+           dataType: "json",
+           url: restPath+"/ros/"+namespace+"/navigation/land",
+           success: function(data){
+
+               if(data.success){
+                    $(".toast").html("System Landing!");
+                    $(".toast").show();
+                    setTimeout(function(){
+                        $(".toast").hide(20);
+                    },3000);
+               }
+               else{
+                    $(".toast").html("Land Rejected by FlytPOD! Retry!!");
+                    $(".toast").show();
+                    setTimeout(function(){
+                        $(".toast").hide(20);
+                    },3000);
+               }
+           },
+           error: function(){
+                $(".toast").html("Failed to contact FlytPOD! Retry!!");
+                $(".toast").show();
+                setTimeout(function(){
+                    $(".toast").hide(20);
+                },3000);
+           }
+    });
+
+});
+
 function socketCallback(){
 
     var listenerBatteryStatus = new ROSLIB.Topic({
