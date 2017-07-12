@@ -12,7 +12,6 @@ VehicleID = VehicleID.replace(" ", "")
 
 if len(token) != 40 or len(VehicleID) != 8:
     print "The token length should be 40 characters and the VehicleID should be 8 characters"
-else:
     sys.exit()
 
 headers = {'Authorization':'Token ' + token, 'VehicleID': VehicleID}
@@ -30,6 +29,7 @@ result = get('https://dev.flytbase.com/rest/ros/get_global_namespace', headers =
 result = json.loads(result.content)
 namespace = result["param_info"]["param_value"]
 
+print "Your " + namespace + " is connected through cloud client"
 #take off API call
 #take_off_alt = 10
 #printResponse("navigation/take_off	", put('https://dev.flytbase.com/rest/ros/' + namespace + '/navigation/take_off', headers = headers, data=json.dumps({"takeoff_alt": take_off_alt})))
