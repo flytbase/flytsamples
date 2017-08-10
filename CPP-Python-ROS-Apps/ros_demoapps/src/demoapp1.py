@@ -14,7 +14,7 @@ def setpoint_local_position(lx, ly, lz, yaw=0.0, tolerance= 1.0, async = False, 
 		header_msg = std_msgs.msg.Header(1,rospy.Time(0.0,0.0),'a')
 		twist = geometry_msgs.msg.Twist(geometry_msgs.msg.Vector3(lx,ly,lz),geometry_msgs.msg.Vector3(0.0,0.0,yaw))
 		twiststamped_msg= geometry_msgs.msg.TwistStamped(header_msg, twist)
-		req_msg = PositionSetRequest(twiststamped_msg, tolerance, async, relative, yaw_valid, body_frame)
+		req_msg = PositionSetRequest(x=lx, y=ly, z=lz, yaw=yaw, tolerance=tolerance, async=async, relative=relative, yaw_valid=yaw_valid, body_frame=body_frame)
 		resp = handle(req_msg)
 		return resp.success
 	except rospy.ServiceException, e:
