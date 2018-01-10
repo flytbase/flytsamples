@@ -4,6 +4,7 @@
 You can download the SDK for development from here:
 * [FlytSDK Android](https://github.com/flytbase/flytsamples/tree/master/Mobile-Apps/Java-Apps/FlytSDK)
 
+
 This is a sample app to control your drone, like you would with a physical joystick. For documentation on how to connect your app scroll down and for using the app check the readme in the app folder.
 
 
@@ -15,10 +16,12 @@ This is a sample app to control your drone, like you would with a physical joyst
 
 Once you have connected to your FlytOS device using the right URL, you will be redirected to the app screen.
 
-5. You need to press takeoff before you can use the joystick to control your drone.
-6. The left joystick gives the drone commands to move front back left and right.
-7. The right joystick gives the drone commands to move up down.
-8. All the commands are given with respect to the drone(front = direction of the nose/front of the drone).
-9. The app uses velocity_set FlytAPI to control the drone.
+4. You need to press takeoff before you can use the joystick to control your drone.
+5. The left joystick gives the drone commands to move front back left and right.
+6. The right buttons gives the drone commands to move up down.
+7. All the commands are given with respect to the drone(front = direction of the nose/front of the drone).
+8. The app uses velocity_set FlytAPI to control the drone.
 
+<img  style='margin:300px;' src="https://raw.githubusercontent.com/rohitkflytbase/flytsamples/master/Mobile-Apps/Java-Apps/SampleApp/Screenshots/login.png" width="500" >
 
+<img  style='margin:300px;' src="https://raw.githubusercontent.com/rohitkflytbase/flytsamples/master/Mobile-Apps/Java-Apps/SampleApp/Screenshots/sampleapp.png" width="500" >
