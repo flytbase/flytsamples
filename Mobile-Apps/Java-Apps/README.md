@@ -1,7 +1,7 @@
 # Android Apps (Java)
 
 
-You can download the * [FlytSDK](https://github.com/flytbase/flytsamples/raw/master/Mobile-Apps/Java-Apps/FlytSDK/FlytSDK.jar) for development from here:
+You can download the [FlytSDK](https://github.com/flytbase/flytsamples/raw/master/Mobile-Apps/Java-Apps/FlytSDK/FlytSDK.jar) for development from here:
 
 
 This is a sample app to control your drone, like you would with a physical joystick. For documentation on how to connect your app scroll down and for using the app check the readme in the app folder.
